@@ -1,26 +1,35 @@
 header {
-    height: 60px;
     background-color: #0D0D0C;
     color: beige;
-    width: 100%;
+    padding: 8px 0;
+    box-shadow: none;
 
     .navigation {
+        padding: 0 4px 0 6px;
         display: flex;
-        padding: 0 20px;
         justify-content: space-between;
 
         nav {
             display: flex;
+            align-items: center;
 
-            li {
-                font-size: 20px;
-                
+            .li {
+                height: 48px;
+                display: flex;
+                align-items: center;
+            }
+
+            &.nav-left {
+                .li {
+                    padding: 0 16px
+                }
+            }
+
+            &.nav-right {
+                .li {
+                    padding: 0 12px;
+                }
             }
         }
-    }
-
-    hr {
-        position: relative;
-        bottom: 0;
     }
 }
