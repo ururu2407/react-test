@@ -1,0 +1,202 @@
+Project{
+    build{
+
+    }
+    node_modules{
+
+    }
+    public {
+        config{
+            colors{
+                _colors.scss
+            }
+            typography{
+                _typography.scss
+            }
+        }
+        photos{
+            icons{
+
+            }
+            images{
+
+            }
+        }
+    }
+    src{
+        componemts{
+            Header {
+            Header.jsx
+            header.scss
+            header-responsive.scss
+            }
+        }
+        pages {
+            Home {
+                home00 {
+                    first.jxs
+                    first.scss
+                    first-responsive.scss
+                }
+                
+                home01 {
+                    second.jsx
+                    second.scss
+                    second-responsive.scss
+                }
+
+                home02 {
+                    thirh.jsx
+                    thirh.scss
+                    thirh-responsive.scss
+                }
+
+                home03 {
+                    fourth.jsx
+                    fourth.scss
+                    fourth-responsive.scss
+                }
+
+                home04 {
+                    fifth.jsx
+                    fifth.scss
+                    fifth-responsive.scss
+                }
+                home.jxs
+                home.scss
+                home-responsive.scss
+            }
+
+            Projects{
+                Role Playing Game{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+                Calorie Counter{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+                Music Player{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+                Date Formatter{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+                Palindrome Checker{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+                Football Team Cards{
+                    content {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    description {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                    code {
+                        index.js
+                        index.jsx
+                        index.scss
+                        index-responsive.scss
+                    }
+                }
+            }
+        } 
+        App.scss
+        App.js
+        App.test.js
+        index.scss
+        index.js
+        logo.svg
+        reportWebVitals.js
+        setupTests.js
+    }
+}
