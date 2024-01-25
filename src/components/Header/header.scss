@@ -1,0 +1,26 @@
+header {
+    height: 60px;
+    background-color: #0D0D0C;
+    color: beige;
+    width: 100%;
+
+    .navigation {
+        display: flex;
+        padding: 0 20px;
+        justify-content: space-between;
+
+        nav {
+            display: flex;
+
+            li {
+                font-size: 20px;
+                
+            }
+        }
+    }
+
+    hr {
+        position: relative;
+        bottom: 0;
+    }
+}
