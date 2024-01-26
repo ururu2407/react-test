@@ -47,6 +47,9 @@ export const shades = {
         5: "#0D0D0C",
         95: "#F2F2F2",
         60: "#9A9693",
+    },
+    divider: {
+        1: "#393937",
     }
 };
 
@@ -54,10 +57,15 @@ const theme = createTheme({
     palette: {
         primary: {
             main: shades.surface[5],
+            light: shades.surface[95],
             contrastText: shades.surface[60]
         },
         text: {
             primary: shades.surface[60]
+        },
+        divider: shades.divider[1],
+        action: {
+            active: shades.surface[60]
         }
     },
     typography: {
@@ -129,7 +137,7 @@ const theme = createTheme({
             letterSpacing: 0,
             fontWeight: 400
         },
-        Display: {
+        display: {
             fontFamily: `"Montserrat", sans-serif`,
             fontSize: 40,
             lineHeight: 1.2,
