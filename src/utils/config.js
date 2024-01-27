@@ -50,6 +50,12 @@ export const shades = {
     },
     divider: {
         1: "#393937",
+    },
+    extended: {
+        1: '#5FCBA4',
+        2: '#5FA0CB',
+        3: '#6E5FCB',
+        4: '#FF7777',
     }
 };
 
@@ -61,12 +67,17 @@ const theme = createTheme({
             contrastText: shades.surface[60]
         },
         text: {
-            primary: shades.surface[60]
+            primary: shades.surface[60],
+            secondary: shades.surface[95]
         },
         divider: shades.divider[1],
         action: {
             active: shades.surface[60]
-        }
+        },
+        mintGreen: shades.extended[1],
+        carolinaBlue: shades.extended[2],
+        grapePurple: shades.extended[3],
+        coralRed: shades.extended[4],
     },
     typography: {
         fontFamily: `"Inconsolata", sans-serif`,

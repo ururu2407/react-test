@@ -1,9 +1,7 @@
 import React from 'react';
-import styles from './second.scss'
 import {
     List,
     Box,
-    ListSubheader,
     ListItemButton,
     ListItemIcon,
     ListItemText,

@@ -8,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Home />
+      <footer />
     </BrowserRouter>
     // <div className="App">
     //   <header className="App-header">
