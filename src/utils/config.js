@@ -56,12 +56,17 @@ export const shades = {
         2: '#5FA0CB',
         3: '#6E5FCB',
         4: '#FF7777',
+    },
+    primaryOpacity:{
+        8: 'rgba(229, 206, 113, 0.08)',
+        12: 'rgba(229, 206, 113, 0.12)'
     }
 };
 
 const theme = createTheme({
     palette: {
         primary: {
+            primary: shades.primary[80],
             main: shades.surface[5],
             light: shades.surface[95],
             contrastText: shades.surface[60]
@@ -73,6 +78,10 @@ const theme = createTheme({
         divider: shades.divider[1],
         action: {
             active: shades.surface[60]
+        },
+        button: {
+            hover: shades.primaryOpacity[8],
+            pressed: shades.primaryOpacity[12],
         },
         mintGreen: shades.extended[1],
         carolinaBlue: shades.extended[2],

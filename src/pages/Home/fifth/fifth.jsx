@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
+import styles from './fifth.scss';
 
 
 export const Fifth = () => {
@@ -24,7 +25,7 @@ export const Fifth = () => {
                 <Box>
                     <Box display={'flex'}
                         sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
-                        <Box width={'103px'}
+                        <Box minWidth={'103px'} maxWidth={'103px'}
                             paddingRight={'20px'}
                             sx={{ borderRight: '1px solid', borderColor: 'divider' }}>
                             <Typography
@@ -36,21 +37,18 @@ export const Fifth = () => {
                             paddingBottom='20px'
                             display='grid'
                             gap='16px'>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Teambuilding</Typography>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Project theme selection</Typography>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Develop project plan</Typography>
@@ -58,7 +56,7 @@ export const Fifth = () => {
                     </Box>
                     <Box display={'flex'}
                         sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
-                        <Box width={'103px'}
+                        <Box minWidth={'103px'}
                             paddingRight={'20px'}
                             paddingTop='20px'
                             sx={{ borderRight: '1px solid', borderColor: 'divider' }}>
@@ -72,22 +70,20 @@ export const Fifth = () => {
                             paddingTop='20px'
                             display='grid'
                             gap='16px'>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'carolinaBlue', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash blue'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Execution of work</Typography>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'carolinaBlue', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash blue'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Progress reporting</Typography>
                         </Box>
                     </Box>
                     <Box display={'flex'}>
-                        <Box width={'103px'}
+                        <Box minWidth={'103px'}
                             paddingRight={'20px'}
                             paddingTop='20px'
                             sx={{ borderRight: '1px solid', borderColor: 'divider' }}>
@@ -100,15 +96,13 @@ export const Fifth = () => {
                             paddingTop='20px'
                             display='grid'
                             gap='16px'>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'grapePurple', width: 'fit-content' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash purple'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Project defence</Typography>
-                            <Typography
-                                sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'grapePurple', width: '170px' }}
-                                padding={'12px 15px'}
+                            <Typography className='dash purple'
+                                sx={{ padding: '12px 15px' }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Submitting a project report</Typography>

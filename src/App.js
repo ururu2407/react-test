@@ -1,32 +1,14 @@
 import './App.css';
-import { Header } from './components/Header/Header'
 import { Home } from './pages/Home/home';
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { RolePlayingGame } from './pages/Projects/Role Playing Game/Role Playing Game';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Home />
-      <footer />
-    </BrowserRouter>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //     <p>asdasdasdas</p>
-    //   </header>
-    // </div>
+    <Routes>
+      <Route path='/react-test' element={<Home/>}/>
+      <Route path='/react-test/rpg' element={<RolePlayingGame />}/>
+    </Routes>
   );
 }
 

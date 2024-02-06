@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './header.scss';
 import { AppBar, Box, Link, Divider } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom";
-import shadows from '@mui/material/styles/shadows';
 import { BehanceIcon, GithubIcon } from '../../utils/icons';
 
 export const Header = () => {
     return (
         <>
-            <AppBar className={styles.header} position='static' elevation={0}>
+            <AppBar className={styles.header} position='fixed' elevation={0}>
                 <Box className="navigation" display="flex" justifyContent='space-between'>
                     <nav className="nav-left">
                         <Link className='li'
@@ -16,7 +15,7 @@ export const Header = () => {
                             underline='none'
                             color="primary.contrastText"
                             component={RouterLink}
-                            to="/">
+                            to="/react-test">
                             Home
                         </Link>
                         <Link className='li'

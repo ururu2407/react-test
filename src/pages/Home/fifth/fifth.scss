@@ -1,0 +1,28 @@
+.dash:before {
+    content: "";
+    position: absolute;
+    border: 2px dashed;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    border-radius: 12px;
+    border-color: #393937;
+}
+
+.dash {
+    border-radius: 12px;
+    width: fit-content;
+    overflow: hidden;
+    position: relative;
+
+    &.green:before {
+        border-color: #5FCBA4;
+    }
+    &.blue:before {
+        border-color: #5FA0CB;
+    }
+    &.purple:before {
+        border-color: #6E5FCB;
+    }
+}

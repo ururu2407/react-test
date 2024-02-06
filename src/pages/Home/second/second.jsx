@@ -6,7 +6,8 @@ import {
     ListItemIcon,
     ListItemText,
     Typography,
-    Divider
+    Divider,
+    Link
 } from '@mui/material';
 import {
     SwordsIcon,
@@ -16,6 +17,8 @@ import {
     TextAaIcon,
     MedalIcon
 } from '../../../utils/icons';
+
+import { Link as RouterLink } from "react-router-dom";
 
 export const Second = () => {
     return (
@@ -34,7 +37,7 @@ export const Second = () => {
                 </Box>
                 <List sx={{ color: "primary.light", padding: 0 }}>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }} to='/react-test/rpg' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <SwordsIcon />
                         </ListItemIcon>

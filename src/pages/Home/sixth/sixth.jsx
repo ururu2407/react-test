@@ -40,21 +40,18 @@ export const Sixth = () => {
                     <Box paddingLeft={'20px'}
                         display='grid'
                         gap='16px'>
-                        <Typography
-                            sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                            padding={'12px 15px'}
+                        <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Teambuilding</Typography>
-                        <Typography
-                            sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                            padding={'12px 15px'}
+                        <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Project theme selection</Typography>
-                        <Typography
-                            sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'mintGreen', width: 'fit-content' }}
-                            padding={'12px 15px'}
+                        <Typography className='dash green'
+                                sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Develop project plan</Typography>
@@ -116,7 +113,7 @@ export const Sixth = () => {
                             style={{ borderRadius: '16px' }}  /* Apply borderRadius directly to the img */
                         />
                     </Box>
-                    <Box display={'flex'}>
+                    <Box display={'flex'} justifyContent={'space-around'}>
                         <Box
                             display={'flex'} justifyContent={'center'} alignItems={'center'}
                             padding={'8px'} border={1} borderRadius={'16px'}
@@ -173,15 +170,13 @@ export const Sixth = () => {
                     <Box paddingLeft={'20px'}
                         display='grid'
                         gap='16px'>
-                        <Typography
-                            sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'carolinaBlue', width: 'fit-content' }}
-                            padding={'12px 15px'}
+                        <Typography className='dash blue'
+                                sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Execution of work</Typography>
-                        <Typography
-                            sx={{ border: '1px dashed', borderRadius: '12px', borderColor: 'carolinaBlue', width: 'fit-content' }}
-                            padding={'12px 15px'}
+                        <Typography className='dash blue'
+                                sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Progress reporting</Typography>
