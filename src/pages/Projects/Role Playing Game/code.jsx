@@ -321,8 +321,7 @@ const locations = [
                                 <ContentCopyIcon sx={{ height: '16px', width: '16px' }} />
                                 <Typography variant='body2'>Copy Code</Typography>
                             </Button>
-                        )
-                        }
+                        )}
                     </Box>
                     <SyntaxHighlighter
                         language="javascript"
