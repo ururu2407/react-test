@@ -7,7 +7,6 @@ import {
     ListItemText,
     Typography,
     Divider,
-    Link
 } from '@mui/material';
 import {
     SwordsIcon,
@@ -37,7 +36,8 @@ export const Second = () => {
                 </Box>
                 <List sx={{ color: "primary.light", padding: 0 }}>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }} to='/react-test/rpg' component={RouterLink}>
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                        to='/react-test/rpg' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <SwordsIcon />
                         </ListItemIcon>
@@ -46,7 +46,8 @@ export const Second = () => {
                         } />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                        to='/react-test/calorie-counter' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <FlameIcon />
                         </ListItemIcon>

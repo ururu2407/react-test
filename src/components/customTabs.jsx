@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -108,5 +109,60 @@ CustomTab.propTypes = {
     label: PropTypes.string.isRequired,
     ...Tabs.propTypes, // Прокидываем все свойства Tabs
 
+};
+
+export const GlobalInputBaseStyles = () => (
+    <style>
+        {`
+        .MuiInputBase-root {
+            border: 1px solid;
+            border-color: primary.contrastText;
+            border-radius: 8px;
+            padding: 4px 16px;
+            color: primary.light;
+        }
+        .MuiInputBase-input::placeholder {
+            color: primary.contrastText;
+            opacity: 1;
+        }
+        `}
+    </style>
+);
+
+export const CustomButton = ({ buttonText, onClick }) => {
+    return (
+        <>
+            <Button
+                sx={{
+                    height: '40px',
+                    border: '1px solid',
+                    borderColor: 'primary.light',
+                    color: 'primary.light',
+                    borderRadius: '12px',
+                    textTransform: 'none',
+                    padding: '8px 20px',
+                    background: 'primary.main',
+                    '&:hover': {
+                        borderColor: 'primary.primary',
+                        backgroundColor: 'button.hover',
+                        color: 'primary.primary'
+                    },
+                    '&:active': {
+                        borderColor: 'primary.primary',
+                        backgroundColor: 'button.pressed',
+                        color: 'primary.primary'
+                    },
+                    '&:focus': {
+                        borderColor: 'primary.primary',
+                        backgroundColor: 'button.pressed',
+                        color: 'primary.primary'
+                    }
+                }}
+                onClick={onClick}
+            >
+                {buttonText}
+            </Button>
+        </>
+    );
 };
 
