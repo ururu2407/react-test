@@ -116,53 +116,86 @@ export const GlobalInputBaseStyles = () => (
         {`
         .MuiInputBase-root {
             border: 1px solid;
-            border-color: primary.contrastText;
             border-radius: 8px;
+            border-color: #9A9693;
             padding: 4px 16px;
-            color: primary.light;
+            transition: all 0.2s easy;
         }
         .MuiInputBase-input::placeholder {
-            color: primary.contrastText;
+            color: #9A9693;
             opacity: 1;
+            transition: all 0.2s easy;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .MuiInputBase-input::placeholder {
+            color: #9A9693;
+            opacity: 1;
+            transition: all 0.2s easy;
+        }
+        .MuiInputBase-root:hover {
+            border: 1px solid;
+            border-radius: 8px;
+            border-color: #F2F2F2;
+            color: #F2F2F2;
+            transition: all 0.2s easy;
+        }
+        .MuiInputBase-root.Mui-focused {
+            border: 1px solid;
+            border-radius: 8px;
+            border-color: #E5CE71;
+            color: #F2F2F2;
+            transition: all 0.2s easy;
+        }
+        .MuiInputBase-root:hover:before {
+            display: none
+        }
+        .MuiInputBase-root.Mui-focused:after {
+            display: none
         }
         `}
     </style>
 );
 
-export const CustomButton = ({ buttonText, onClick }) => {
+export const CustomButton = ({ buttonText, onClick, padding = '8px 20px' }) => {
     return (
-        <>
-            <Button
-                sx={{
-                    height: '40px',
-                    border: '1px solid',
-                    borderColor: 'primary.light',
-                    color: 'primary.light',
-                    borderRadius: '12px',
-                    textTransform: 'none',
-                    padding: '8px 20px',
-                    background: 'primary.main',
-                    '&:hover': {
-                        borderColor: 'primary.primary',
-                        backgroundColor: 'button.hover',
-                        color: 'primary.primary'
-                    },
-                    '&:active': {
-                        borderColor: 'primary.primary',
-                        backgroundColor: 'button.pressed',
-                        color: 'primary.primary'
-                    },
-                    '&:focus': {
-                        borderColor: 'primary.primary',
-                        backgroundColor: 'button.pressed',
-                        color: 'primary.primary'
-                    }
-                }}
-                onClick={onClick}
-            >
-                {buttonText}
-            </Button>
-        </>
+        <Button
+            sx={{
+                minHeight: '40px',
+                border: '1px solid',
+                borderColor: 'primary.light',
+                color: 'primary.light',
+                borderRadius: '12px',
+                textTransform: 'none',
+                padding: padding, // используем переданное значение padding
+                fontFamily: `"Inconsolata", sans-serif`,
+                fontSize: '14px',
+                lineHeight: '1.42',
+                letterSpacing: '0.1px',
+                fontWeight: '500',
+                '&:hover': {
+                    borderColor: 'primary.primary',
+                    backgroundColor: 'button.hover',
+                    color: 'primary.primary'
+                },
+                '&:active': {
+                    borderColor: 'primary.primary',
+                    backgroundColor: 'button.pressed',
+                    color: 'primary.primary'
+                },
+                '&:focus': {
+                    borderColor: 'primary.primary',
+                    backgroundColor: 'button.pressed',
+                    color: 'primary.primary'
+                }
+            }}
+            onClick={onClick}
+        >
+            {buttonText}
+        </Button>
     );
 };
 

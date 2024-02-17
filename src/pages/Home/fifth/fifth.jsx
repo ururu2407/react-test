@@ -6,7 +6,7 @@ import styles from './fifth.scss';
 export const Fifth = () => {
     return (
         <>
-            <Box display={'grid'} gap='20px'>
+            <Box className={styles.asd} display={'grid'} gap='20px'>
                 <Box display={'grid'} gap='8px'>
                     <Typography
                         sx={{ border: 1, borderRadius: '8px', width: '29px', height: '20px' }}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
+import { CustomButton } from '../../../components/customs';
 
 export const RpgProgram = () => {
     const [xp, setXp] = useState(0)
@@ -283,85 +283,9 @@ export const RpgProgram = () => {
                     <Typography variant='body2' fontWeight={'Medium'} color='mintGreen' className="stat">XP: <span className="xpText">{xp}</span></Typography>
                 </Box>
                 <Box display={'flex'} gap='14px'>
-                    <Button variant='primary' onClick={button1}
-                        className="button1"
-                        sx={{
-                            border: '1px solid',
-                            borderColor: 'primary.light',
-                            color: 'primary.light',
-                            borderRadius: '12px',
-                            textTransform: 'none',
-                            padding: '8px 17px',
-                            background: 'primary.main',
-                            '&:hover': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.hover',
-                                color: 'primary.primary'
-                            },
-                            '&:active': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            },
-                            '&:focus': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            }
-                        }}
-                    ><Typography variant='label2'>{button1Text}</Typography></Button>
-                    <Button variant="outlined" onClick={button2}
-                        className="button2"
-                        sx={{
-                            border: '1px solid',
-                            borderColor: 'primary.light',
-                            color: 'primary.light',
-                            borderRadius: '12px',
-                            textTransform: 'none',
-                            padding: '8px 17px',
-                            background: 'primary.main',
-                            '&:hover': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.hover',
-                                color: 'primary.primary'
-                            },
-                            '&:active': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            },
-                            '&:focus': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            }
-                        }}><Typography variant='label2'>{button2Text}</Typography></Button>
-                    <Button variant="outlined" onClick={button3}
-                        className="button3"
-                        sx={{
-                            border: '1px solid',
-                            borderColor: 'primary.light',
-                            color: 'primary.light',
-                            borderRadius: '12px',
-                            textTransform: 'none',
-                            padding: '8px 17px',
-                            background: 'primary.main',
-                            '&:hover': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.hover',
-                                color: 'primary.primary'
-                            },
-                            '&:active': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            },
-                            '&:focus': {
-                                borderColor: 'primary.primary',
-                                backgroundColor: 'button.pressed',
-                                color: 'primary.primary'
-                            }
-                        }}><Typography variant='label2'>{button3Text}</Typography></Button>
+                    <CustomButton buttonText={button1Text} onClick={button1} padding='8px 17px'/>
+                    <CustomButton buttonText={button2Text} onClick={button2} padding='8px 17px'/>
+                    <CustomButton buttonText={button3Text} onClick={button3} padding='8px 17px'/>
                 </Box>
                 <Box display={monsterStats} gap='32px'>
                     <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Monster Name: <span className="monsterName">{monsterName}</span></Typography>

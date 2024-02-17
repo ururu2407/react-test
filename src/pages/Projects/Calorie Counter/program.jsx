@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, Input, Button, Divider, Tooltip } from '@mui/material';
 import { DeleteIcon, GoalIcon, FoodIcon, FlameRedIcon, InfoIcon } from '../../../utils/icons';
-import { GlobalInputBaseStyles, CustomButton } from '../../../components/customTabs';
+import { GlobalInputBaseStyles, CustomButton } from '../../../components/customs';
 
 export const CalorieCounterProgram = () => {
     const [mealData, setMealData] = useState({
@@ -246,7 +246,7 @@ export const CalorieCounterProgram = () => {
                         {/* disableFocusListener */}
                         <Tooltip title='Remaining = Goal - Food + Exercise' margin='0'>
                             <Box style={beforeStyles} flexDirection={'column'}>
-                                <Typography color='primary.light' fontWeight='Bold' variant='headline'>{baseGoal.calories}</Typography>
+                                <Typography color='primary.light' fontWeight='Bold' variant='headline'>{baseGoal.calories - sumTotalCalories().totalCalories + sumTotalCalories().totalExerciseCalories}</Typography>
                                 <Box display={'flex'} gap={'4px'} alignItems={'center'}>
                                     <Typography color='primary.contrastText' fontWeight='Light' variant='body3'>Remaining</Typography>
                                     <InfoIcon sx={{ width: '16px', height: '16px' }} />
@@ -274,7 +274,7 @@ export const CalorieCounterProgram = () => {
                         </Box>
                         <Box>
                             <Box display={'flex'} gap='8px'>
-                                <FlameRedIcon color='coralRed' />
+                                <FlameRedIcon style={{ color: 'red' }} />
                                 <Typography variant='body2' fontWeight={'Light'}>Exercise</Typography>
                             </Box>
                             <Typography marginLeft={'32px'} variant='body2' fontWeight={'Medium'}>{sumTotalCalories().totalExerciseCalories}</Typography>
@@ -306,21 +306,14 @@ export const CalorieCounterProgram = () => {
                         <Input value={baseGoal.name} onChange={handleChangeBaseGoalName} />
                         <Input type="number" value={baseGoal.calories} onChange={handleChangeBaseGoalCalories} />
                     </Box>
-                    <Box display={'flex'} padding={'0 16px 16px 16px'}>
+                    <Box display={'flex'} gap='12px' padding={'0 16px 16px 16px'}>
                         {baseGoalEditing ? ( // Если базовая цель редактируется
                             <>
-                                <CustomButton buttonText={'Save'}
-                                    onClick={handleSaveBaseGoal}
-
-                                />
-                                <CustomButton buttonText={'Cancel'}
-                                    onClick={handleCancelBaseGoal}
-                                />
+                                <CustomButton buttonText={'Save'} onClick={handleSaveBaseGoal}/>
+                                <CustomButton buttonText={'Cancel'} onClick={handleCancelBaseGoal}/>
                             </>
                         ) : ( // Если базовая цель не редактируется
-                            <CustomButton buttonText={'Edit'}
-                                onClick={handleEditBaseGoal}
-                            />
+                            <CustomButton buttonText={'Edit'} onClick={handleEditBaseGoal}/>
                         )}
                     </Box>
                 </Box>
@@ -389,25 +382,13 @@ export const CalorieCounterProgram = () => {
                         <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                             {!active[meal] ? (
                                 <>
-                                    <CustomButton
-                                        buttonText={'Add Entry'}
-                                        onClick={() => addField(meal)}
-                                    />
-                                    <CustomButton
-                                        buttonText={'Edit'}
-                                        onClick={() => showFields(meal)}
-                                    />
+                                    <CustomButton buttonText={'Add Entry'} onClick={() => addField(meal)}/>
+                                    <CustomButton buttonText={'Edit'} onClick={() => showFields(meal)}/>
                                 </>
                             ) : (
                                 <>
-                                    <CustomButton
-                                        buttonText={'Save'}
-                                        onClick={() => hideFields(meal)}
-                                    />
-                                    <CustomButton
-                                        buttonText={'Cancel'}
-                                        onClick={() => cancelMeal(meal)}
-                                    />
+                                    <CustomButton buttonText={'Save'} onClick={() => hideFields(meal)}/>
+                                    <CustomButton buttonText={'Cancel'} onClick={() => cancelMeal(meal)}/>
                                 </>
                             )}
                         </Box>
@@ -470,9 +451,6 @@ export const CalorieCounterProgram = () => {
                                 </Button>
                             </Box>
                             <Box >
-                                <Box style={{ display: exercise.displayText ? 'none' : 'block' }}>
-
-                                </Box>
                                 <Typography padding={'0 16px 0 16px'} color='primary.light' style={{ display: exercise.displayText ? 'block' : 'none' }}>
                                     <Typography variant='body2'>{exercise.exercise}</Typography>
                                     <Typography variant='body2'>{exercise.calories} cal</Typography>
@@ -484,25 +462,13 @@ export const CalorieCounterProgram = () => {
                     <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                         {!exerciseActive ? (
                             <>
-                                <CustomButton
-                                    buttonText={'Add Entry'}
-                                    onClick={addExercise}
-                                />
-                                <CustomButton
-                                    buttonText={'Edit'}
-                                    onClick={showExerciseFields}
-                                />
+                                <CustomButton buttonText={'Add Entry'} onClick={addExercise}/>
+                                <CustomButton buttonText={'Edit'} onClick={showExerciseFields}/>
                             </>
                         ) : (
                             <>
-                                <CustomButton
-                                    buttonText={'Save'}
-                                    onClick={hideExerciseFields}
-                                />
-                                <CustomButton
-                                    buttonText={'Cancel'}
-                                    onClick={cancelExercise}
-                                />
+                                <CustomButton buttonText={'Save'} onClick={hideExerciseFields}/>
+                                <CustomButton buttonText={'Cancel'} onClick={cancelExercise}/>
                             </>
                         )}
                     </Box>

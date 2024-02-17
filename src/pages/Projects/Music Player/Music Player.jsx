@@ -4,11 +4,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { TabPanel, CustomTab, a11yProps } from '../../../components/customs';
 import { ArrowRight } from '../../../utils/icons';
-import { RpgProgram } from './program';
-import { RpgDescription } from './description';
-import { RpgCode } from './code';
+import { MusicPlayerProgram } from './program';
+import { MusicPlayerDescription } from './description';
+import { MusicPlayerCode } from './code';
 
-export const RolePlayingGame = () => {
+export const MusicPlayer = () => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -36,7 +36,7 @@ export const RolePlayingGame = () => {
                                     variant='body4'>
                                     01
                                 </Typography>
-                                <Typography className='custom-second-label' variant='body'>Role Playing Game</Typography>
+                                <Typography className='custom-second-label' variant='body'>Music Player</Typography>
                             </Box>
                             <ArrowRight className='custom-arrow-label' sx={{ height: '9.5px', width: '6px', }} />
                         </Box>
@@ -76,13 +76,13 @@ export const RolePlayingGame = () => {
                     } {...a11yProps(2)} />
                 </Tabs>
                 <TabPanel sx={{ padding: '0px' }} value={value} index={0}>
-                    <RpgProgram />
+                    <MusicPlayerProgram />
                 </TabPanel>
                 <TabPanel sx={{ padding: '0px' }} value={value} index={1}>
-                    <RpgDescription />
+                    <MusicPlayerDescription />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <RpgCode/>
+                    <MusicPlayerCode/>
                 </TabPanel>
             </Box>
         </>

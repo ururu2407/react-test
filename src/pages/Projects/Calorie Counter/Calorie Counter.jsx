@@ -2,7 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { TabPanel, CustomTab, a11yProps } from '../../../components/customTabs';
+import { TabPanel, CustomTab, a11yProps } from '../../../components/customs';
 import { ArrowRight } from '../../../utils/icons';
 import { CalorieCounterProgram } from './program';
 import { CalorieCounterDescription } from './description';

@@ -1,0 +1,22 @@
+.rotate {
+    animation: spin 10s linear infinite;
+
+    /* Анимация вращения */
+}
+
+.paused {
+    animation-play-state: paused;
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+        /* Начальный угол вращения */
+    }
+
+    to {
+        transform: rotate(360deg);
+        /* Конечный угол вращения */
+    }
+}

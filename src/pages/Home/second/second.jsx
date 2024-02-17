@@ -56,7 +56,8 @@ export const Second = () => {
                         } />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                    to='/react-test/music-player' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <MusicIcon />
                         </ListItemIcon>
