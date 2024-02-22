@@ -141,7 +141,7 @@ export const MusicPlayerProgram = () => {
         };
 
         audio.addEventListener("timeupdate", handleTimeUpdate);
-        audio.addEventListener("ended", handleSongEnded); 
+        audio.addEventListener("ended", handleSongEnded);
 
         return () => {
             audio.removeEventListener("timeupdate", handleTimeUpdate);
@@ -278,7 +278,7 @@ export const MusicPlayerProgram = () => {
                             overflow: 'hidden'
                         }}>
                         <img
-                            className={imageClass} 
+                            className={imageClass}
                             width={'100%'}
                             src="https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/quincy-larson-album-art.jpg" alt="" />
                     </Box>
@@ -331,9 +331,9 @@ export const MusicPlayerProgram = () => {
                         min={0}
                         max={duration || 0}
                         onChange={handleSeek}
-                        onMouseDown={() => setIsSeeking(true)} 
+                        onMouseDown={() => setIsSeeking(true)}
                         onMouseUp={handleSeekEnd}
-                        onTouchStart={() => setIsSeeking(true)} 
+                        onTouchStart={() => setIsSeeking(true)}
                         onTouchEnd={handleSeekEnd}
                         onTouchMove={handleSeek}
                         style={{

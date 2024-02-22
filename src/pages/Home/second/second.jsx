@@ -12,7 +12,6 @@ import {
     SwordsIcon,
     FlameIcon,
     MusicIcon,
-    CalendarIcon,
     TextAaIcon,
     MedalIcon
 } from '../../../utils/icons';
@@ -66,12 +65,13 @@ export const Second = () => {
                         } />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                    to='/react-test/palindrome-checker' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
-                            <CalendarIcon />
+                            <TextAaIcon />
                         </ListItemIcon>
                         <ListItemText primary={
-                            <Typography variant='body'>Date formatter</Typography>
+                            <Typography variant='body'>Palindrome checker</Typography>
                         } />
                     </ListItemButton>
                     <Divider />

@@ -119,12 +119,12 @@ export const GlobalInputBaseStyles = () => (
             border-radius: 8px;
             border-color: #9A9693;
             padding: 4px 16px;
-            transition: all 0.2s easy;
+            transition: all 0.2s ease;
         }
         .MuiInputBase-input::placeholder {
             color: #9A9693;
             opacity: 1;
-            transition: all 0.2s easy;
+            transition: all 0.2s ease;
         }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -134,21 +134,21 @@ export const GlobalInputBaseStyles = () => (
         .MuiInputBase-input::placeholder {
             color: #9A9693;
             opacity: 1;
-            transition: all 0.2s easy;
+            transition: all 0.2s ease;
         }
         .MuiInputBase-root:hover {
             border: 1px solid;
             border-radius: 8px;
             border-color: #F2F2F2;
             color: #F2F2F2;
-            transition: all 0.2s easy;
+            transition: all 0.2s ease;
         }
         .MuiInputBase-root.Mui-focused {
             border: 1px solid;
             border-radius: 8px;
             border-color: #E5CE71;
             color: #F2F2F2;
-            transition: all 0.2s easy;
+            transition: all 0.2s ease;
         }
         .MuiInputBase-root:hover:before {
             display: none
