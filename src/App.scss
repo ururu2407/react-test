@@ -1,0 +1,36 @@
+input {
+    font-family: "Inconsolata";
+    background: none;
+    color: #F2F2F2;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    padding: 15px 16px;
+    border-radius: 12px;
+    border: 1px solid #CBC9C8;
+    outline: none;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+input::placeholder {
+    color: #CBC9C8;
+    opacity: 1;
+    transition: all 0.2s ease;
+}
+
+input:hover {
+    border-color: #F2F2F2;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    border-color: #E5CE71;
+    transition: all 0.2s ease;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Input, Button, Divider, Tooltip } from '@mui/material';
+import { Box, Typography, Button, Divider, Tooltip } from '@mui/material';
 import { DeleteIcon, GoalIcon, FoodIcon, FlameRedIcon, InfoIcon } from '../../../utils/icons';
-import { GlobalInputBaseStyles, CustomButton } from '../../../components/customs';
+import { GlobalInputBaseStyles, PrimaryButton, TextButton } from '../../../components/customs';
 
 export const CalorieCounterProgram = () => {
     const [mealData, setMealData] = useState({
@@ -303,17 +303,17 @@ export const CalorieCounterProgram = () => {
                         gap={'8px'}
                         style={{ display: baseGoalEditing ? 'flex' : 'none' }}
                     >
-                        <Input value={baseGoal.name} onChange={handleChangeBaseGoalName} />
-                        <Input type="number" value={baseGoal.calories} onChange={handleChangeBaseGoalCalories} />
+                        <input value={baseGoal.name} onChange={handleChangeBaseGoalName} />
+                        <input type="number" value={baseGoal.calories} onChange={handleChangeBaseGoalCalories} />
                     </Box>
                     <Box display={'flex'} gap='12px' padding={'0 16px 16px 16px'}>
                         {baseGoalEditing ? ( // Если базовая цель редактируется
                             <>
-                                <CustomButton buttonText={'Save'} onClick={handleSaveBaseGoal}/>
-                                <CustomButton buttonText={'Cancel'} onClick={handleCancelBaseGoal}/>
+                                <PrimaryButton buttonText={'Save'} onClick={handleSaveBaseGoal} />
+                                <TextButton buttonText={'Cancel'} onClick={handleCancelBaseGoal} />
                             </>
                         ) : ( // Если базовая цель не редактируется
-                            <CustomButton buttonText={'Edit'} onClick={handleEditBaseGoal}/>
+                            <PrimaryButton buttonText={'Edit'} onClick={handleEditBaseGoal} />
                         )}
                     </Box>
                 </Box>
@@ -338,7 +338,7 @@ export const CalorieCounterProgram = () => {
                                     margin: '16px',
                                     paddingBottom: '16px'
                                 }} gap={'8px'} style={{ display: hiddenFields[meal] ? 'none' : 'flex' }}>
-                                    <Input
+                                    <input
                                         placeholder='Chicken'
                                         value={field.food}
                                         onChange={(e) => {
@@ -347,7 +347,7 @@ export const CalorieCounterProgram = () => {
                                             setMealData(updatedData);
                                         }}
                                     />
-                                    <Input
+                                    <input
                                         type="number"
                                         placeholder='100 cal'
                                         value={field.calories}
@@ -382,13 +382,13 @@ export const CalorieCounterProgram = () => {
                         <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                             {!active[meal] ? (
                                 <>
-                                    <CustomButton buttonText={'Add Entry'} onClick={() => addField(meal)}/>
-                                    <CustomButton buttonText={'Edit'} onClick={() => showFields(meal)}/>
+                                    <PrimaryButton buttonText={'Add Entry'} onClick={() => addField(meal)} />
+                                    <TextButton buttonText={'Edit'} onClick={() => showFields(meal)} />
                                 </>
                             ) : (
                                 <>
-                                    <CustomButton buttonText={'Save'} onClick={() => hideFields(meal)}/>
-                                    <CustomButton buttonText={'Cancel'} onClick={() => cancelMeal(meal)}/>
+                                    <PrimaryButton buttonText={'Save'} onClick={() => hideFields(meal)} />
+                                    <TextButton buttonText={'Cancel'} onClick={() => cancelMeal(meal)} />
                                 </>
                             )}
                         </Box>
@@ -416,7 +416,7 @@ export const CalorieCounterProgram = () => {
                                 margin: '16px',
                                 paddingBottom: '16px'
                             }} gap={'8px'} style={{ display: hiddenExerciseFields ? 'none' : 'flex' }}>
-                                <Input
+                                <input
                                     value={exercise.exercise}
                                     placeholder='Cardio'
                                     onChange={(e) => {
@@ -425,7 +425,7 @@ export const CalorieCounterProgram = () => {
                                         setExerciseData(updatedData);
                                     }}
                                 />
-                                <Input
+                                <input
                                     type="number"
                                     value={exercise.calories}
                                     placeholder='200 cal'
@@ -462,13 +462,13 @@ export const CalorieCounterProgram = () => {
                     <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                         {!exerciseActive ? (
                             <>
-                                <CustomButton buttonText={'Add Entry'} onClick={addExercise}/>
-                                <CustomButton buttonText={'Edit'} onClick={showExerciseFields}/>
+                                <PrimaryButton buttonText={'Add Entry'} onClick={addExercise} />
+                                <TextButton buttonText={'Edit'} onClick={showExerciseFields} />
                             </>
                         ) : (
                             <>
-                                <CustomButton buttonText={'Save'} onClick={hideExerciseFields}/>
-                                <CustomButton buttonText={'Cancel'} onClick={cancelExercise}/>
+                                <PrimaryButton buttonText={'Save'} onClick={hideExerciseFields} />
+                                <TextButton buttonText={'Cancel'} onClick={cancelExercise} />
                             </>
                         )}
                     </Box>

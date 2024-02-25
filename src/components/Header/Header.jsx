@@ -18,14 +18,14 @@ export const Header = () => {
                             to="/react-test">
                             Home
                         </Link>
-                        <Link className='li'
+                        {/* <Link className='li'
                             variant='label1'
                             underline='none'
                             color="primary.contrastText"
                             component={RouterLink}
                             to="/project">
                             Project
-                        </Link>
+                        </Link> */}
                     </nav>
                     <nav className="nav-right">
                         <Link className='li'

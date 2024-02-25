@@ -337,10 +337,12 @@ export const MusicPlayerProgram = () => {
                         onTouchEnd={handleSeekEnd}
                         onTouchMove={handleSeek}
                         style={{
-                            height: '2px',
+                            padding: '0px',
+                            borderColor: '#CBC9C8',
+                            height: '1px',
                             width: '100%',
                             opacity: '1',
-                            accentColor: isPlaying ? '#E5CE71' : '#9A9693'
+                            accentColor: isPlaying ? '#E5CE71' : '#CBC9C8'
                         }}
                     />
                     <Box display={"flex"} justifyContent={"space-between"} marginTop={'9px'}>

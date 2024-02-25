@@ -59,8 +59,8 @@ export const MedalIcon = createSvgIcon(
     </svg>
 )
 export const ArrowRight = createSvgIcon(
-    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.21967 0.46967C0.512563 0.176777 0.987437 0.176777 1.28033 0.46967L5.28033 4.46967C5.57322 4.76256 5.57322 5.23744 5.28033 5.53033L1.28033 9.53033C0.987437 9.82322 0.512564 9.82322 0.21967 9.53033C-0.0732229 9.23744 -0.073223 8.76256 0.21967 8.46967L3.68934 5L0.21967 1.53033C-0.0732233 1.23744 -0.0732233 0.762563 0.21967 0.46967Z" fill="#E5CE71" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.71967 0.46967C1.01256 0.176777 1.48744 0.176777 1.78033 0.46967L5.78033 4.46967C6.07322 4.76256 6.07322 5.23744 5.78033 5.53033L1.78033 9.53033C1.48744 9.82322 1.01256 9.82322 0.71967 9.53033C0.426777 9.23744 0.426777 8.76256 0.71967 8.46967L4.18934 5L0.71967 1.53033C0.426777 1.23744 0.426777 0.762563 0.71967 0.46967Z" fill="#F2F2F2" />
     </svg>
 )
 export const DeleteIcon = createSvgIcon(
@@ -95,7 +95,7 @@ export const MoreVertical = createSvgIcon(
 )
 export const DecorateElement = createSvgIcon(
     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="8" height="8" rx="4"  />
+        <rect width="8" height="8" rx="4" />
     </svg>
 )
 export const SkipBack = createSvgIcon(

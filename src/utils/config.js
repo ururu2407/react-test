@@ -46,7 +46,7 @@ export const shades = {
     surface: {
         5: "#0D0D0C",
         95: "#F2F2F2",
-        60: "#9A9693",
+        60: "#CBC9C8",
     },
     divider: {
         1: "#393937",
@@ -67,6 +67,7 @@ const theme = createTheme({
     palette: {
         primary: {
             primary: shades.primary[80],
+            onPrimary: shades.primary[20],
             main: shades.surface[5],
             light: shades.surface[95],
             contrastText: shades.surface[60]
@@ -76,6 +77,7 @@ const theme = createTheme({
             secondary: shades.surface[95]
         },
         divider: shades.divider[1],
+        outlined: shades.neutralVariant[50],
         action: {
             active: shades.surface[60]
         },

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { CustomButton } from '../../../components/customs';
+import { OutlinedButton } from '../../../components/customs';
 
 export const RpgProgram = () => {
     const [xp, setXp] = useState(0)
@@ -282,10 +282,12 @@ export const RpgProgram = () => {
                     <Typography variant='body2' fontWeight={'Medium'} color='primary.primary' className="stat">Gold: <span className="goldText">{gold}</span></Typography>
                     <Typography variant='body2' fontWeight={'Medium'} color='mintGreen' className="stat">XP: <span className="xpText">{xp}</span></Typography>
                 </Box>
-                <Box display={'flex'} gap='14px'>
-                    <CustomButton buttonText={button1Text} onClick={button1} padding='8px 17px'/>
-                    <CustomButton buttonText={button2Text} onClick={button2} padding='8px 17px'/>
-                    <CustomButton buttonText={button3Text} onClick={button3} padding='8px 17px'/>
+                <Box display={'flex'} flexWrap={'wrap'} gap='12px'>
+                    <Box display={'flex'} gap={'12px'} width='100%'>
+                        <OutlinedButton width='100%' buttonText={button1Text} onClick={button1} />
+                        <OutlinedButton width='100%' buttonText={button2Text} onClick={button2} />
+                    </Box>
+                    <OutlinedButton width='100%' buttonText={button3Text} onClick={button3} />
                 </Box>
                 <Box display={monsterStats} gap='32px'>
                     <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Monster Name: <span className="monsterName">{monsterName}</span></Typography>

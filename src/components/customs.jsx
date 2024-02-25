@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -53,7 +53,7 @@ export const CustomTab = (props) => {
                     },
                     '& .custom-second-label': {
                         transform: props.selected ? '' : 'translateX(-47px)',
-                        color: props.selected ? '' : 'primary.primary',
+                        color: props.selected ? '' : 'primary.light',
                         transition: 'all 0.2s'
                     },
                     '& .custom-arrow-label': {
@@ -115,10 +115,13 @@ export const GlobalInputBaseStyles = () => (
     <style>
         {`
         .MuiInputBase-root {
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
             border: 1px solid;
             border-radius: 8px;
             border-color: #9A9693;
-            padding: 4px 16px;
+            padding: 11px 16px;
             transition: all 0.2s ease;
         }
         .MuiInputBase-input::placeholder {
@@ -160,36 +163,31 @@ export const GlobalInputBaseStyles = () => (
     </style>
 );
 
-export const CustomButton = ({ buttonText, onClick, padding = '8px 20px' }) => {
+export const OutlinedButton = ({ buttonText, onClick, padding = '8px 16px', width }) => {
     return (
         <Button
             sx={{
                 minHeight: '40px',
                 border: '1px solid',
-                borderColor: 'primary.light',
-                color: 'primary.light',
+                borderColor: 'outlined',
+                color: 'primary.primary',
                 borderRadius: '12px',
                 textTransform: 'none',
                 padding: padding, // используем переданное значение padding
+                width: width, // используем переданное значение width
                 fontFamily: `"Inconsolata", sans-serif`,
-                fontSize: '14px',
+                fontSize: '16px',
                 lineHeight: '1.42',
                 letterSpacing: '0.1px',
-                fontWeight: '500',
+                fontWeight: '400',
                 '&:hover': {
-                    borderColor: 'primary.primary',
                     backgroundColor: 'button.hover',
-                    color: 'primary.primary'
                 },
                 '&:active': {
-                    borderColor: 'primary.primary',
                     backgroundColor: 'button.pressed',
-                    color: 'primary.primary'
                 },
                 '&:focus': {
-                    borderColor: 'primary.primary',
                     backgroundColor: 'button.pressed',
-                    color: 'primary.primary'
                 }
             }}
             onClick={onClick}
@@ -199,3 +197,65 @@ export const CustomButton = ({ buttonText, onClick, padding = '8px 20px' }) => {
     );
 };
 
+export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
+    return (
+        <Button
+            sx={{
+                maxHeight: '40px',
+                backgroundColor: 'primary.primary',
+                color: 'primary.onPrimary',
+                borderRadius: '12px',
+                textTransform: 'none',
+                padding: padding, // используем переданное значение padding
+                fontFamily: `"Inconsolata", sans-serif`,
+                fontSize: '16px',
+                lineHeight: '1.42',
+                letterSpacing: '0.1px',
+                fontWeight: '400',
+                '&:hover': {
+                    backgroundColor: 'primary.primary',
+                },
+                '&:active': {
+                    backgroundColor: 'primary.primary',
+                },
+                '&:focus': {
+                    backgroundColor: 'primary.primary',
+                }
+            }}
+            onClick={onClick}
+        >
+            {buttonText}
+        </Button>
+    );
+};
+export const TextButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
+    return (
+        <Button
+            sx={{
+                maxHeight: '40px',
+                backgroundColor: 'primary.main',
+                color: 'primary.primary',
+                borderRadius: '12px',
+                textTransform: 'none',
+                padding: padding, // используем переданное значение padding
+                fontFamily: `"Inconsolata", sans-serif`,
+                fontSize: '16px',
+                lineHeight: '1.42',
+                letterSpacing: '0.1px',
+                fontWeight: '400',
+                '&:hover': {
+                    backgroundColor: 'button.hover',
+                },
+                '&:active': {
+                    backgroundColor: 'button.pressed',
+                },
+                '&:focus': {
+                    backgroundColor: 'button.pressed',
+                }
+            }}
+            onClick={onClick}
+        >
+            {buttonText}
+        </Button>
+    );
+};

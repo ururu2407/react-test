@@ -12,8 +12,7 @@ import {
     SwordsIcon,
     FlameIcon,
     MusicIcon,
-    TextAaIcon,
-    MedalIcon
+    TextAaIcon
 } from '../../../utils/icons';
 
 import { Link as RouterLink } from "react-router-dom";
@@ -30,7 +29,7 @@ export const Second = () => {
                         Projects
                     </Typography>
                     <Typography variant='headline'>
-                        6
+                        4
                     </Typography>
                 </Box>
                 <List sx={{ color: "primary.light", padding: 0 }}>
@@ -74,7 +73,7 @@ export const Second = () => {
                             <Typography variant='body'>Palindrome checker</Typography>
                         } />
                     </ListItemButton>
-                    <Divider />
+                   {/*  <Divider />
                     <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <TextAaIcon />
@@ -91,7 +90,7 @@ export const Second = () => {
                         <ListItemText primary={
                             <Typography variant='body'>Bulding football team cards</Typography>
                         } />
-                    </ListItemButton>
+                    </ListItemButton> */}
                     <Divider />
                 </List>
             </Box>

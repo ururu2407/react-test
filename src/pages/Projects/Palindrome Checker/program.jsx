@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { GlobalInputBaseStyles } from '../../../components/customs';
+// import { GlobalInputBaseStyles } from '../../../components/customs';
 
 export const PalindromeCheckerProgram = () => {
     const inputRef = useRef()
@@ -45,10 +45,10 @@ export const PalindromeCheckerProgram = () => {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
-    
+
     return (
         <>
-            <GlobalInputBaseStyles />
+            {/* <GlobalInputBaseStyles /> */}
             <Box display='grid' gap='20px'>
                 <Typography
                     variant='headline'
@@ -72,21 +72,8 @@ export const PalindromeCheckerProgram = () => {
                             fullWidth
                             placeholder='Type to check...'
                             style={{
-                                fontFamily: "Inconsolata",
-                                background: 'none',
-                                color: '#F2F2F2',
-                                fontSize: '16px',
-                                lineHeight: '1.5',
-                                letterSpacing: '0.5px',
-                                padding: '15px 16px',
-                                border: '1px solid',
-                                borderColor: isFocused ?
-                                    '#E5CE71' :
-                                    (isHovered ? '#F2F2F2' :
-                                        (resultBool === 1 ? '#5FCBA4' : (resultBool === 2 ? '#FF7777' : '#9A9693'))),
-                                borderRadius: '12px',
-                                outline: 'none',
-                                transition: 'border-color 0.3s',
+                                width: 'auto',
+                                border: `1px solid  ${isFocused ? '#E5CE71' : (isHovered ? '#F2F2F2' : (resultBool === 1 ? '#5FCBA4' : (resultBool === 2 ? '#FF7777' : '#CBC9C8')))}`,
                             }}
                             onFocus={handleFocus}
                             onBlur={handleBlur}
@@ -108,7 +95,7 @@ export const PalindromeCheckerProgram = () => {
                             <Typography variant='label1'>Check Palindrome</Typography>
                         </Button>
                     </Box>
-                    <Box sx={{display: originalText === 0 ? 'none' : 'block'}}>
+                    <Box sx={{ display: originalText === 0 ? 'none' : 'block' }}>
                         {
                             resultBool === 1 ? (
                                 <Typography variant='body2' fontWeight='Medium' color='primary.light'>
