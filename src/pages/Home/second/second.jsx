@@ -73,25 +73,26 @@ export const Second = () => {
                             <Typography variant='body'>Palindrome checker</Typography>
                         } />
                     </ListItemButton>
-                   {/*  <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    <Divider />
+                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                    to='/react-test/dessert-shop' component={RouterLink}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <TextAaIcon />
                         </ListItemIcon>
                         <ListItemText primary={
-                            <Typography variant='body'>Palindrome checker</Typography>
+                            <Typography variant='body'>Dessert Shop</Typography>
                         } />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                   {/*  <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <MedalIcon />
                         </ListItemIcon>
                         <ListItemText primary={
                             <Typography variant='body'>Bulding football team cards</Typography>
                         } />
-                    </ListItemButton> */}
-                    <Divider />
+                    </ListItemButton>
+                    <Divider /> */}
                 </List>
             </Box>
         </>

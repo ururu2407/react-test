@@ -11,11 +11,9 @@ export const CalorieCounterDescription = () => {
                     color='primary.light'
                 >Description</Typography>
                 <Typography variant='body1' color='primary.light' fontWeight='Light'>
-                    Our first project is a Role Playing Game created with JavaScript. This project allows users to enjoy a simple interface and no-frills features.
-                    <br/><br/>
-                    The game offers short adventures where the player makes decisions that will affect the course of the game.
-                    <br/><br/>
-                    This project is not about impressive graphical effects or complex code, but about the simple joy of playing.
+                    Calorie counter is a JavaScript application that helps users keep track of the calories in their diet.
+                    <br /><br />
+                    The simple interface makes it easy to enter and track calories consumed, which helps you maintain a healthy lifestyle.
                 </Typography>
             </Box>
         </>

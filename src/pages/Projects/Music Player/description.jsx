@@ -11,11 +11,9 @@ export const MusicPlayerDescription = () => {
                     color='primary.light'
                 >Description</Typography>
                 <Typography variant='body1' color='primary.light' fontWeight='Light'>
-                    Our first project is a Role Playing Game created with JavaScript. This project allows users to enjoy a simple interface and no-frills features.
-                    <br/><br/>
-                    The game offers short adventures where the player makes decisions that will affect the course of the game.
-                    <br/><br/>
-                    This project is not about impressive graphical effects or complex code, but about the simple joy of playing.
+                    This JavaScript project is a simple music player that allows users to enjoy music right in the browser.
+                    <br /><br />
+                    The user-friendly interface is created in an interesting retro style reminiscent of the old days.
                 </Typography>
             </Box>
         </>

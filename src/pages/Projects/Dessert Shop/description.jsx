@@ -2,7 +2,7 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export const PalindromeCheckerDescription = () => {
+export const DessertShopDescription = () => {
     return (
         <>
             <Box display='grid' gap='20px'>
@@ -11,7 +11,9 @@ export const PalindromeCheckerDescription = () => {
                     color='primary.light'
                 >Description</Typography>
                 <Typography variant='body1' color='primary.light' fontWeight='Light'>
-                    Palindrome checker is a simple and concise program that allows you to determine whether the entered text is a palindrome.
+                    Calorie counter is a JavaScript application that helps users keep track of the calories in their diet.
+                    <br /><br />
+                    The simple interface makes it easy to enter and track calories consumed, which helps you maintain a healthy lifestyle.
                 </Typography>
             </Box>
         </>

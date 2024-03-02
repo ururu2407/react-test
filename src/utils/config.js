@@ -60,6 +60,10 @@ export const shades = {
     primaryOpacity:{
         8: 'rgba(229, 206, 113, 0.08)',
         12: 'rgba(229, 206, 113, 0.12)'
+    },
+    surfaceOpacity:{
+        8: 'rgba(242, 242, 242, 0.08)',
+        12: 'rgba(242, 242, 242, 0.12)'
     }
 };
 
@@ -84,6 +88,10 @@ const theme = createTheme({
         button: {
             hover: shades.primaryOpacity[8],
             pressed: shades.primaryOpacity[12],
+        },
+        textButton: {
+            hover: shades.surfaceOpacity[8],
+            pressed: shades.surfaceOpacity[12],
         },
         mintGreen: shades.extended[1],
         carolinaBlue: shades.extended[2],
@@ -147,7 +155,7 @@ const theme = createTheme({
         },
         title: {
             fontFamily: `"Montserrat", sans-serif`,
-            fontSize: 24,
+            fontSize: 20,
             lineHeight: 1.4,
             letterSpacing: 0,
             fontWeight: 400
