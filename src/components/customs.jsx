@@ -197,11 +197,13 @@ export const OutlinedButton = ({ buttonText, onClick, padding = '8px 16px', widt
     );
 };
 
-export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
+export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px', width = 'auto', height = '40px' }) => {
     return (
         <Button
             sx={{
-                maxHeight: '40px',
+                maxHeight: height,
+                maxWidth: width, // добавляем настраиваемую ширину
+                width: '100%',
                 backgroundColor: 'primary.primary',
                 color: 'primary.onPrimary',
                 borderRadius: '12px',
@@ -228,6 +230,7 @@ export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px' }) =>
         </Button>
     );
 };
+
 export const TextButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
     return (
         <Button
