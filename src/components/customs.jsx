@@ -31,6 +31,55 @@ TabPanel.propTypes = {
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
 };
+export const CustomListStyles = {
+    list: {
+        position: 'relative',
+        overflow: 'hidden',
+        color: "primary.light",
+        padding: 0,
+    },
+    listItem: {
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '8px 0px',
+        color: 'primary.contrastText',
+        minHeight: 55,
+        overflow: 'hidden',
+
+        '& .arrow': {
+            display: 'flex',
+            position: 'absolute',
+            right: '0px',
+            opacity: '0',
+            justifyContent: 'end',
+            transition: 'all 0.2s ease',
+
+            paddingRight: '5px',
+        },
+        '&:hover, &:focus': {
+            color: 'primary.light',
+            transition: 'all 0.2s ease',
+
+            '& .list-item': {
+                transform: 'translateX(-40px)', // Изменение цвета фона при ховере
+                transition: 'all 0.2s ease',
+            },
+            
+            '& .arrow': {
+                opacity: '1',
+                '& svg': {
+                    height: '9.5px',
+                    width: '6px',
+                }
+            }
+        }
+    },
+   
+    listItemIcon: {
+        minWidth: 40,
+    }
+}
 
 export const CustomTab = (props) => {
     return (

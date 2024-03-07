@@ -12,8 +12,11 @@ import {
     SwordsIcon,
     FlameIcon,
     MusicIcon,
-    TextAaIcon
+    TextAaIcon,
+    ArrowRight,
+    CakeIcon
 } from '../../../utils/icons';
+import { CustomListStyles } from '../../../components/customs';
 
 import { Link as RouterLink } from "react-router-dom";
 
@@ -29,62 +32,77 @@ export const Second = () => {
                         Projects
                     </Typography>
                     <Typography variant='headline'>
-                        4
+                        5
                     </Typography>
                 </Box>
-                <List sx={{ color: "primary.light", padding: 0 }}>
+                <List sx={CustomListStyles.list}>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                    <ListItemButton sx={CustomListStyles.listItem}
                         to='/react-test/rpg' component={RouterLink}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <SwordsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Role Playing Game</Typography>
-                        } />
+                        <Box display={'flex'} className='list-item' alignItems={'center'}>
+                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                <SwordsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant='body'>Role Playing Game</Typography>
+                            } />
+                        </Box>
+                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
+                    <ListItemButton sx={CustomListStyles.listItem}
                         to='/react-test/calorie-counter' component={RouterLink}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <FlameIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Calorie counter</Typography>
-                        } />
+                        <Box display={'flex'} className='list-item' alignItems={'center'}>
+                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                <FlameIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant='body'>Calorie Counter</Typography>
+                            } />
+                        </Box>
+                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
-                    to='/react-test/music-player' component={RouterLink}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <MusicIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Music player</Typography>
-                        } />
+                    <ListItemButton sx={CustomListStyles.listItem}
+                        to='/react-test/music-player' component={RouterLink}>
+                        <Box display={'flex'} className='list-item' alignItems={'center'}>
+                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                <MusicIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant='body'>Music player</Typography>
+                            } />
+                        </Box>
+                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
-                    to='/react-test/palindrome-checker' component={RouterLink}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <TextAaIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Palindrome checker</Typography>
-                        } />
+                    <ListItemButton sx={CustomListStyles.listItem}
+                        to='/react-test/palindrome-checker' component={RouterLink}>
+                        <Box display={'flex'} className='list-item' alignItems={'center'}>
+                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                <TextAaIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant='body'>Palindrome checker</Typography>
+                            } />
+                        </Box>
+                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}
-                    to='/react-test/dessert-shop' component={RouterLink}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <TextAaIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Dessert Shop</Typography>
-                        } />
+                    <ListItemButton sx={CustomListStyles.listItem}
+                        to='/react-test/dessert-shop' component={RouterLink}>
+                        <Box display={'flex'} className='list-item' alignItems={'center'}>
+                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                <CakeIcon sx={{fill: '#F2F2F2'}}/>
+                            </ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant='body'>Dessert shop</Typography>
+                            } />
+                        </Box>
+                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
                     </ListItemButton>
                     <Divider />
-                   {/*  <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
+                    {/*  <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
                         <ListItemIcon sx={{ minWidth: 40 }}>
                             <MedalIcon />
                         </ListItemIcon>

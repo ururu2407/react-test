@@ -250,25 +250,23 @@ export class DessertShopProgram extends Component {
         if (product) {
             const existingItemIndex = this.state.items.findIndex(item => item.id === id);
             if (existingItemIndex !== -1) {
-                // Уже существует, увеличиваем количество
                 const updatedItems = [...this.state.items];
                 updatedItems[existingItemIndex].count += count;
                 this.setState({
                     items: updatedItems,
                     addToCartClicked: { ...this.state.addToCartClicked, [id]: true },
-                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1 // Увеличиваем количество товаров на добавленное количество
+                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1 
                 }, () => {
                     this.addToCart(product.price * count);
                 });
             } else {
-                // Новый продукт
                 const newItem = { ...product, count };
                 const items = [...this.state.items, newItem];
                 this.setState({
                     items,
                     itemsInCart: { ...this.state.itemsInCart, [id]: true },
                     addToCartClicked: { ...this.state.addToCartClicked, [id]: true },
-                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1// Увеличиваем количество товаров на добавленное количество
+                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1
                 },
                     () => {
                         this.addToCart(product.price * count);
@@ -328,7 +326,7 @@ export class DessertShopProgram extends Component {
             cartTaxes: 0,
             cartTotal: 0,
             items: [],
-            addToCartClicked: {}, // Сбрасываем состояние кнопок "Add to cart" на пустой объект
+            addToCartClicked: {},
         });
         this.setState(prevState => ({
         }), () => {
@@ -361,6 +359,7 @@ export class DessertShopProgram extends Component {
                     <Box color={'primary.light'}
                         borderRadius={'16px'}
                         boxShadow={'0px 0px 4px 0px #000000'}
+                        border={'1px solid #1A1A19'}
                         padding={'24px 16px 16px'}
                         height={'fit-content'}
                     >
@@ -504,7 +503,7 @@ export class DessertShopProgram extends Component {
                                             buttonText={'Add to cart'}
                                             width='196px'
                                             height='48px'
-                                            onClick={() => this.addItem(id, this.state.itemCounts[id] || 1)} // Передаем выбранное количество
+                                            onClick={() => this.addItem(id, this.state.itemCounts[id] || 1)}
                                         />
                                     ) : (
                                         <button className={!this.state.removeClicked[id] ? 'remove-btn' : 'remove-btn clicked'}

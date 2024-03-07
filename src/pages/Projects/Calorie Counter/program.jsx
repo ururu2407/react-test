@@ -309,11 +309,11 @@ export const CalorieCounterProgram = () => {
                     <Box display={'flex'} gap='12px' padding={'0 16px 16px 16px'}>
                         {baseGoalEditing ? ( // Если базовая цель редактируется
                             <>
-                                <PrimaryButton buttonText={'Save'} onClick={handleSaveBaseGoal} />
+                                <PrimaryButton width='72px' buttonText={'Save'} onClick={handleSaveBaseGoal} />
                                 <TextButton buttonText={'Cancel'} onClick={handleCancelBaseGoal} />
                             </>
                         ) : ( // Если базовая цель не редактируется
-                            <PrimaryButton buttonText={'Edit'} onClick={handleEditBaseGoal} />
+                            <PrimaryButton width='72px' buttonText={'Edit'} onClick={handleEditBaseGoal} />
                         )}
                     </Box>
                 </Box>
@@ -382,12 +382,12 @@ export const CalorieCounterProgram = () => {
                         <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                             {!active[meal] ? (
                                 <>
-                                    <PrimaryButton buttonText={'Add Entry'} onClick={() => addField(meal)} />
+                                    <PrimaryButton width='113px' buttonText={'Add Entry'} onClick={() => addField(meal)} />
                                     <TextButton buttonText={'Edit'} onClick={() => showFields(meal)} />
                                 </>
                             ) : (
                                 <>
-                                    <PrimaryButton buttonText={'Save'} onClick={() => hideFields(meal)} />
+                                    <PrimaryButton width='72px' buttonText={'Save'} onClick={() => hideFields(meal)} />
                                     <TextButton buttonText={'Cancel'} onClick={() => cancelMeal(meal)} />
                                 </>
                             )}
@@ -462,12 +462,12 @@ export const CalorieCounterProgram = () => {
                     <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
                         {!exerciseActive ? (
                             <>
-                                <PrimaryButton buttonText={'Add Entry'} onClick={addExercise} />
+                                <PrimaryButton width='113px' buttonText={'Add Entry'} onClick={addExercise} />
                                 <TextButton buttonText={'Edit'} onClick={showExerciseFields} />
                             </>
                         ) : (
                             <>
-                                <PrimaryButton buttonText={'Save'} onClick={hideExerciseFields} />
+                                <PrimaryButton width='72px' buttonText={'Save'} onClick={hideExerciseFields} />
                                 <TextButton buttonText={'Cancel'} onClick={cancelExercise} />
                             </>
                         )}
