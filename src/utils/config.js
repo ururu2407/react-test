@@ -45,11 +45,11 @@ export const shades = {
     },
     surface: {
         5: "#0D0D0C",
-        95: "#F2F2F2",
-        60: "#CBC9C8",
+        95: "#FAFAFA",
+        60: "#D4D4D4",
     },
     divider: {
-        1: "#393937",
+        1: "#262626",
     },
     extended: {
         1: '#5FCBA4',
@@ -62,8 +62,8 @@ export const shades = {
         12: 'rgba(229, 206, 113, 0.12)'
     },
     surfaceOpacity:{
-        8: 'rgba(242, 242, 242, 0.08)',
-        12: 'rgba(242, 242, 242, 0.12)'
+        8: 'rgba(250, 250, 250, 0.08)',
+        12: 'rgba(250, 250, 250, 0.12)'
     }
 };
 
@@ -74,7 +74,8 @@ const theme = createTheme({
             onPrimary: shades.primary[20],
             main: shades.surface[5],
             light: shades.surface[95],
-            contrastText: shades.surface[60]
+            contrastText: shades.surface[60],
+            surfaceContainerLow: shades.neutralVariant[10]
         },
         text: {
             primary: shades.surface[60],

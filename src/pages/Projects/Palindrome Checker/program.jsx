@@ -73,6 +73,7 @@ export const PalindromeCheckerProgram = () => {
                             placeholder='Type to check...'
                             style={{
                                 width: 'auto',
+                                height: '40px',
                                 border: `1px solid  ${isFocused ? '#E5CE71' : (isHovered ? '#F2F2F2' : (resultBool === 1 ? '#5FCBA4' : (resultBool === 2 ? '#FF7777' : '#CBC9C8')))}`,
                             }}
                             onFocus={handleFocus}

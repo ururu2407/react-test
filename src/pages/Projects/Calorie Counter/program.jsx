@@ -8,17 +8,10 @@ export const CalorieCounterProgram = () => {
         Breakfast: [],
         Lunch: [],
         Dinner: [],
+        Snacks: [],
     });
 
     const [exerciseData, setExerciseData] = useState([]);
-
-    const [hiddenFields, setHiddenFields] = useState({
-        breakfast: false,
-        lunch: false,
-        dinner: false,
-    });
-
-    const [hiddenExerciseFields, setHiddenExerciseFields] = useState(false);
 
     const [active, setActive] = useState({
         breakfast: false,
@@ -26,32 +19,11 @@ export const CalorieCounterProgram = () => {
         dinner: false,
     });
 
-    const [exerciseActive, setExerciseActive] = useState(false);
-
     const [baseGoal, setBaseGoal] = useState({
         name: 'Base goal',
         calories: 1000,
     });
 
-    const [baseGoalEditing, setBaseGoalEditing] = useState(false);
-
-    // Оригинальные значения базовой цели для отмены изменений
-    const [originalBaseGoal, setOriginalBaseGoal] = useState({ ...baseGoal });
-
-    const handleEditBaseGoal = () => {
-        setBaseGoalEditing(true);
-        // Сохраняем оригинальные значения перед редактированием
-        setOriginalBaseGoal({ ...baseGoal });
-    };
-
-    const handleSaveBaseGoal = () => {
-        setBaseGoalEditing(false);
-    };
-
-    const handleCancelBaseGoal = () => {
-        // Отменяем изменения и восстанавливаем оригинальные значения
-        setBaseGoal(originalBaseGoal);
-    };
 
     const handleChangeBaseGoalName = (event) => {
         setBaseGoal({
@@ -72,7 +44,6 @@ export const CalorieCounterProgram = () => {
             ...active,
             [meal]: true
         });
-        showFields(meal);
         setMealData({
             ...mealData,
             [meal]: [...mealData[meal], { food: '', calories: '', displayText: false }],
@@ -80,61 +51,7 @@ export const CalorieCounterProgram = () => {
     };
 
     const addExercise = () => {
-        setExerciseActive(true);
-        showExerciseFields();
         setExerciseData([...exerciseData, { exercise: '', calories: '', displayText: false }]);
-    };
-
-    const hideFields = (meal) => {
-        setActive({
-            ...active,
-            [meal]: false
-        });
-        setHiddenFields({
-            ...hiddenFields,
-            [meal]: true,
-        });
-        const updatedData = { ...mealData };
-        updatedData[meal].forEach((field, index) => {
-            updatedData[meal][index].displayText = true;
-        });
-        setMealData(updatedData);
-    };
-
-    const showFields = (meal) => {
-        setActive({
-            ...active,
-            [meal]: true
-        });
-        setHiddenFields({
-            ...hiddenFields,
-            [meal]: false,
-        });
-        const updatedData = { ...mealData };
-        updatedData[meal].forEach((field, index) => {
-            updatedData[meal][index].displayText = false;
-        });
-        setMealData(updatedData);
-    };
-
-    const hideExerciseFields = () => {
-        setExerciseActive(false);
-        setHiddenExerciseFields(true);
-        const updatedData = [...exerciseData];
-        updatedData.forEach((field, index) => {
-            updatedData[index].displayText = true;
-        });
-        setExerciseData(updatedData);
-    };
-
-    const showExerciseFields = () => {
-        setExerciseActive(true);
-        setHiddenExerciseFields(false);
-        const updatedData = [...exerciseData];
-        updatedData.forEach((field, index) => {
-            updatedData[index].displayText = false;
-        });
-        setExerciseData(updatedData);
     };
 
     const sumCalories = (meal) => {
@@ -175,33 +92,6 @@ export const CalorieCounterProgram = () => {
         };
     };
 
-    const cancelMeal = (meal) => {
-        const updatedData = { ...mealData };
-        const lastInputIndex = updatedData[meal].length - 1;
-        if (lastInputIndex >= 0) {
-            if (updatedData[meal][lastInputIndex].food === '' && updatedData[meal][lastInputIndex].calories === '') {
-                updatedData[meal].pop();
-            } else {
-                updatedData[meal][lastInputIndex].food = '';
-                updatedData[meal][lastInputIndex].calories = '';
-            }
-            setMealData(updatedData);
-        }
-    };
-
-    const cancelExercise = () => {
-        const updatedData = [...exerciseData];
-        const lastInputIndex = updatedData.length - 1;
-        if (lastInputIndex >= 0) {
-            if (updatedData[lastInputIndex].exercise === '' && updatedData[lastInputIndex].calories === '') {
-                updatedData.pop();
-            } else {
-                updatedData[lastInputIndex].exercise = '';
-                updatedData[lastInputIndex].calories = '';
-            }
-            setExerciseData(updatedData);
-        }
-    };
     const containerStyles = {
         position: 'relative',
         margin: '16px',
@@ -233,6 +123,19 @@ export const CalorieCounterProgram = () => {
         zIndex: '1',
         backgroundColor: '#0D0D0C',
     };
+    const [isEditing, setIsEditing] = useState(true);
+
+    const handleEditSave = () => {
+
+        setIsEditing(!isEditing);
+    };
+    const handleCancel = () => {
+        const event = new KeyboardEvent('keydown', {
+            key: 'z',
+            ctrlKey: true,
+        });
+        document.dispatchEvent(event);
+    }
     return (
         <>
             <GlobalInputBaseStyles />
@@ -243,7 +146,6 @@ export const CalorieCounterProgram = () => {
                 >Calorie Counter</Typography>
                 <Box display={'flex'}>
                     <Box style={containerStyles} title='asd'>
-                        {/* disableFocusListener */}
                         <Tooltip title='Remaining = Goal - Food + Exercise' margin='0'>
                             <Box style={beforeStyles} flexDirection={'column'}>
                                 <Typography color='primary.light' fontWeight='Bold' variant='headline'>{baseGoal.calories - sumTotalCalories().totalCalories + sumTotalCalories().totalExerciseCalories}</Typography>
@@ -281,197 +183,169 @@ export const CalorieCounterProgram = () => {
                         </Box>
                     </Box>
                 </Box>
-                <Box border={'1px solid'} borderColor={'divider'} borderRadius={'12px'}>
-                    <Box
-                        display={'flex'}
-                        justifyContent={'space-between'}
-                        color={'primary.light'}
-                        fontWeight={'Medium'}
-                        padding='16px 16px 0 16px'
-                    >
-                        <Typography variant='body2' fontWeight={'Medium'}>{baseGoal.name}</Typography>
-                        <Typography variant='body2' fontWeight={'Medium'}>{baseGoal.calories} cal</Typography>
-                    </Box>
-                    <Divider sx={{ margin: '16px' }} />
-                    <Box
-                        sx={{
-                            borderBottom: '1px solid',
-                            borderColor: 'divider',
-                            margin: '16px',
-                            paddingBottom: '16px'
-                        }}
-                        gap={'8px'}
-                        style={{ display: baseGoalEditing ? 'flex' : 'none' }}
-                    >
-                        <input value={baseGoal.name} onChange={handleChangeBaseGoalName} />
-                        <input type="number" value={baseGoal.calories} onChange={handleChangeBaseGoalCalories} />
-                    </Box>
-                    <Box display={'flex'} gap='12px' padding={'0 16px 16px 16px'}>
-                        {baseGoalEditing ? ( // Если базовая цель редактируется
-                            <>
-                                <PrimaryButton width='72px' buttonText={'Save'} onClick={handleSaveBaseGoal} />
-                                <TextButton buttonText={'Cancel'} onClick={handleCancelBaseGoal} />
-                            </>
-                        ) : ( // Если базовая цель не редактируется
-                            <PrimaryButton width='72px' buttonText={'Edit'} onClick={handleEditBaseGoal} />
-                        )}
-                    </Box>
-                </Box>
-                {Object.keys(mealData).map((meal, mealIndex) => (
-                    <Box border={'1px solid'} borderColor={'divider'} borderRadius={'12px'} key={mealIndex}>
+                <Box padding={'16px'} backgroundColor={'primary.surfaceContainerLow'} border={'1px solid'} borderRadius={'12px'} borderColor={'divider'}>
+                    <Box>
                         <Box
                             display={'flex'}
                             justifyContent={'space-between'}
                             color={'primary.light'}
                             fontWeight={'Medium'}
-                            padding='16px 16px 0 16px'
                         >
-                            <Typography variant='body2' fontWeight={'Medium'}>{meal}</Typography>
-                            <Typography variant='body2' fontWeight={'Medium'}>{sumCalories(meal)} cal</Typography>
+                            <Typography variant='body1' fontWeight={'Medium'}>{baseGoal.name}</Typography>
+                            <Typography variant='body1' fontWeight={'Medium'}>{baseGoal.calories} cal</Typography>
                         </Box>
-                        <Divider sx={{ margin: '16px' }} />
-                        {mealData[meal].map((field, index) => (
+                        <Box paddingTop={'8px'}
+                            gap={'16px'}
+                            style={{ display: isEditing ? 'none' : 'flex' }}
+                        >
+                            <input value={baseGoal.name} onChange={handleChangeBaseGoalName} />
+                            <input type="number" value={baseGoal.calories} onChange={handleChangeBaseGoalCalories} />
+                        </Box>
+                        <Divider sx={{ margin: '16px 0' }} />
+
+                    </Box>
+                    {Object.keys(mealData).map((meal, mealIndex) => (
+                        <Box key={mealIndex}>
+                            <Box
+                                display={'flex'}
+                                justifyContent={'space-between'}
+                                color={'primary.light'}
+                                fontWeight={'Medium'}
+                            >
+                                <Typography variant='body2' fontWeight={'Medium'}>{meal}</Typography>
+                                <Typography variant='body2' fontWeight={'Medium'}>{sumCalories(meal)} cal</Typography>
+                            </Box>
+                            {mealData[meal].map((field, index) => (
+                                <Box key={index} display={'grid'} gap={'12px'}>
+                                    <Box position={'relative'} gap={'16px'} paddingTop={'12px'} style={{ display: isEditing ? 'none' : 'flex' }}>
+                                        <input
+                                            placeholder='Name'
+                                            value={field.food}
+                                            onChange={(e) => {
+                                                const updatedData = { ...mealData };
+                                                updatedData[meal][index].food = e.target.value;
+                                                setMealData(updatedData);
+                                            }}
+                                        />
+                                        <input
+                                            type="number"
+                                            placeholder='100 cal'
+                                            style={{
+                                                marginRight: '38px'
+                                            }}
+                                            value={field.calories}
+                                            onChange={(e) => {
+                                                const updatedData = { ...mealData };
+                                                updatedData[meal][index].calories = e.target.value;
+                                                setMealData(updatedData);
+                                            }}
+                                        />
+                                        <Button
+                                            sx={{
+                                                position: 'absolute',
+                                                right: -16,
+                                                marginTop: '-4px',                                                padding: '0',
+                                                minWidth: '48px',
+                                                minHeight: '48px'
+                                            }}
+                                            onClick={() => {
+                                                const updatedData = { ...mealData };
+                                                updatedData[meal].splice(index, 1);
+                                                setMealData(updatedData);
+                                            }}
+                                        >
+                                            <DeleteIcon />
+                                        </Button>
+                                    </Box>
+                                    <Box color='primary.light' padding={'8px 0 0 8px'} justifyContent={'space-between'} style={{ display: isEditing ? 'flex' : 'none' }}>
+                                        <Typography height={'20px'} variant='body3'>{field.food}</Typography>
+                                        <Typography height={'20px'} variant='body3'>{field.calories} cal</Typography>
+                                    </Box>
+                                </Box>
+                            ))}
+                            <Box padding={'8px 0'} sx={{ display: isEditing ? 'none' : 'block' }}>
+                                <TextButton width='113px' buttonText={'+ Add Entry'} onClick={() => addField(meal)} />
+                            </Box>
+                            <Divider sx={{ margin: isEditing ? '16px 0' : '0 0 16px 0' }} />
+
+                        </Box>
+                    ))}
+                    <Box
+                        display={'block'}
+                        color={'primary.light'}>
+                        <Box display={'flex'}
+                            justifyContent={'space-between'}
+                            color={'primary.light'}
+                            fontWeight={'Medium'}>
+                            <Typography fontWeight={'Medium'} variant='body2'>Exercise</Typography>
+                            <Typography fontWeight={'Medium'} variant='body2'>{exerciseData.reduce((acc, curr) => acc + parseFloat(curr.calories), 0)} cal</Typography>
+                        </Box>
+                        {exerciseData.map((exercise, index) => (
                             <Box key={index} >
-                                <Box sx={{
-                                    borderBottom: '1px solid',
-                                    borderColor: 'divider',
-                                    margin: '16px',
-                                    paddingBottom: '16px'
-                                }} gap={'8px'} style={{ display: hiddenFields[meal] ? 'none' : 'flex' }}>
+                                <Box position={'relative'} gap={'16px'} paddingTop={'12px'} style={{ display: isEditing ? 'none' : 'flex' }}>
                                     <input
-                                        placeholder='Chicken'
-                                        value={field.food}
+                                        value={exercise.exercise}
+                                        placeholder='Name'
                                         onChange={(e) => {
-                                            const updatedData = { ...mealData };
-                                            updatedData[meal][index].food = e.target.value;
-                                            setMealData(updatedData);
+                                            const updatedData = [...exerciseData];
+                                            updatedData[index].exercise = e.target.value;
+                                            setExerciseData(updatedData);
                                         }}
                                     />
                                     <input
                                         type="number"
-                                        placeholder='100 cal'
-                                        value={field.calories}
+                                        value={exercise.calories}
+                                        style={{
+                                            marginRight: '38px'
+                                        }}
+                                        placeholder='200 cal'
                                         onChange={(e) => {
-                                            const updatedData = { ...mealData };
-                                            updatedData[meal][index].calories = e.target.value;
-                                            setMealData(updatedData);
+                                            const updatedData = [...exerciseData];
+                                            updatedData[index].calories = e.target.value;
+                                            setExerciseData(updatedData);
                                         }}
                                     />
                                     <Button
                                         sx={{
+                                            position: 'absolute',
+                                            right: -16,
+                                            marginTop: '-4px',
                                             padding: '0',
-                                            minWidth: '34px',
-                                            minHeight: '34px'
+                                            minWidth: '48px',
+                                            minHeight: '48px'
                                         }}
                                         onClick={() => {
-                                            const updatedData = { ...mealData };
-                                            updatedData[meal].splice(index, 1);
-                                            setMealData(updatedData);
+                                            const updatedData = [...exerciseData];
+                                            updatedData.splice(index, 1);
+                                            setExerciseData(updatedData);
                                         }}
                                     >
                                         <DeleteIcon />
                                     </Button>
                                 </Box>
-                                <Box padding={'0 16px 0 16px'} color='primary.light' style={{ display: field.displayText ? 'block' : 'none' }}>
-                                    <Typography minHeight={'24px'} variant='body2'>{field.food}</Typography>
-                                    <Typography minHeight={'24px'} variant='body2'>{field.calories} cal</Typography>
-                                    <Divider sx={{ margin: '16px 0' }} />
+                                <Box >
+                                    <Typography color='primary.light' padding={'8px 0 0 8px'} justifyContent={'space-between'} style={{ display: isEditing ? 'flex' : 'none' }}>
+                                        <Typography height={'20px'} variant='body3'>{exercise.exercise}</Typography>
+                                        <Typography height={'20px'} variant='body3'>{exercise.calories} cal</Typography>
+                                    </Typography>
                                 </Box>
                             </Box>
                         ))}
-                        <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
-                            {!active[meal] ? (
-                                <>
-                                    <PrimaryButton width='113px' buttonText={'Add Entry'} onClick={() => addField(meal)} />
-                                    <TextButton buttonText={'Edit'} onClick={() => showFields(meal)} />
-                                </>
-                            ) : (
-                                <>
-                                    <PrimaryButton width='72px' buttonText={'Save'} onClick={() => hideFields(meal)} />
-                                    <TextButton buttonText={'Cancel'} onClick={() => cancelMeal(meal)} />
-                                </>
-                            )}
+                        <Box padding={'8px 0'} sx={{ display: isEditing ? 'none' : 'block' }}>
+                            <TextButton width='113px' buttonText={'+ Add Entry'} onClick={addExercise} />
                         </Box>
+
                     </Box>
-                ))}
-                <Box
-                    display={'block'}
-                    color={'primary.light'}
-                    border={'1px solid'} borderColor={'divider'} borderRadius={'12px'}
-                >
-                    <Box display={'flex'}
-                        justifyContent={'space-between'}
-                        color={'primary.light'}
-                        fontWeight={'Medium'}
-                        padding='16px 16px 0 16px'>
-                        <Typography fontWeight={'Medium'} variant='body2'>Exercise</Typography>
-                        <Typography fontWeight={'Medium'} variant='body2'>{exerciseData.reduce((acc, curr) => acc + parseFloat(curr.calories), 0)} cal</Typography>
-                    </Box>
-                    <Divider sx={{ margin: '16px' }} />
-                    {exerciseData.map((exercise, index) => (
-                        <Box key={index} >
-                            <Box sx={{
-                                borderBottom: '1px solid',
-                                borderColor: 'divider',
-                                margin: '16px',
-                                paddingBottom: '16px'
-                            }} gap={'8px'} style={{ display: hiddenExerciseFields ? 'none' : 'flex' }}>
-                                <input
-                                    value={exercise.exercise}
-                                    placeholder='Cardio'
-                                    onChange={(e) => {
-                                        const updatedData = [...exerciseData];
-                                        updatedData[index].exercise = e.target.value;
-                                        setExerciseData(updatedData);
-                                    }}
-                                />
-                                <input
-                                    type="number"
-                                    value={exercise.calories}
-                                    placeholder='200 cal'
-                                    onChange={(e) => {
-                                        const updatedData = [...exerciseData];
-                                        updatedData[index].calories = e.target.value;
-                                        setExerciseData(updatedData);
-                                    }}
-                                />
-                                <Button
-                                    sx={{
-                                        padding: '0',
-                                        minWidth: '34px',
-                                        minHeight: '34px'
-                                    }}
-                                    onClick={() => {
-                                        const updatedData = [...exerciseData];
-                                        updatedData.splice(index, 1);
-                                        setExerciseData(updatedData);
-                                    }}
-                                >
-                                    <DeleteIcon />
-                                </Button>
-                            </Box>
-                            <Box >
-                                <Typography padding={'0 16px 0 16px'} color='primary.light' style={{ display: exercise.displayText ? 'block' : 'none' }}>
-                                    <Typography variant='body2'>{exercise.exercise}</Typography>
-                                    <Typography variant='body2'>{exercise.calories} cal</Typography>
-                                    <Divider sx={{ margin: '16px 0' }} />
-                                </Typography>
-                            </Box>
+                    {isEditing ? (
+                        <Box marginTop={'26px'}>
+                            <PrimaryButton width='128px' buttonText={'Edit'} onClick={handleEditSave} />
                         </Box>
-                    ))}
-                    <Box display={'flex'} gap={'12px'} padding={'0 16px 16px 16px'}>
-                        {!exerciseActive ? (
-                            <>
-                                <PrimaryButton width='113px' buttonText={'Add Entry'} onClick={addExercise} />
-                                <TextButton buttonText={'Edit'} onClick={showExerciseFields} />
-                            </>
-                        ) : (
-                            <>
-                                <PrimaryButton width='72px' buttonText={'Save'} onClick={hideExerciseFields} />
-                                <TextButton buttonText={'Cancel'} onClick={cancelExercise} />
-                            </>
-                        )}
-                    </Box>
+                    ) : (
+                        <Box display={'flex'} gap={'8px'} marginTop={'26px'}>
+                            <PrimaryButton width='128px' buttonText={'Save'} onClick={handleEditSave} />
+                            <TextButton width='128px' buttonText={'Cancel'} onClick={handleCancel} />
+                        </Box>
+                    )}
                 </Box>
             </Box >
         </>

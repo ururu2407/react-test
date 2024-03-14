@@ -167,6 +167,7 @@ export const GlobalInputBaseStyles = () => (
             font-size: 16px;
             line-height: 1.5;
             letter-spacing: 0.5px;
+            height: 40px;
             border: 1px solid;
             border-radius: 8px;
             border-color: #9A9693;
@@ -285,7 +286,7 @@ export const TextButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
         <Button
             sx={{
                 maxHeight: '40px',
-                backgroundColor: 'primary.main',
+                backgroundColor: 'none',
                 color: 'primary.primary',
                 borderRadius: '12px',
                 textTransform: 'none',
