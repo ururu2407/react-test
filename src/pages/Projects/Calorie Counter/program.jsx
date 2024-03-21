@@ -11,7 +11,9 @@ export const CalorieCounterProgram = () => {
         Snacks: [],
     });
 
+    const [prevInputStates, setPrevInputStates] = useState([]); // Состояние для хранения предыдущих состояний данных инпутов
     const [exerciseData, setExerciseData] = useState([]);
+    const [prevInputStatesExercise, setPrevInputStatesExercise] = useState([]);
 
     const [active, setActive] = useState({
         breakfast: false,
@@ -126,16 +128,34 @@ export const CalorieCounterProgram = () => {
     const [isEditing, setIsEditing] = useState(true);
 
     const handleEditSave = () => {
-
         setIsEditing(!isEditing);
     };
+    const handleBlur = (meal, index, field, value) => {
+        setPrevInputStates(prevInputStates => [...prevInputStates, { meal, index, field, value }]);
+    };
+
+    const handleBlurExercise = (index, field, value) => {
+        setPrevInputStatesExercise([...prevInputStatesExercise, { index, field, value }]);
+    };
+
     const handleCancel = () => {
-        const event = new KeyboardEvent('keydown', {
-            key: 'z',
-            ctrlKey: true,
-        });
-        document.dispatchEvent(event);
-    }
+        if (prevInputStates.length > 0) {
+            const updatedData = { ...mealData };
+            const lastInputState = prevInputStates[prevInputStates.length - 1];
+            const { meal, index, field } = lastInputState;
+            updatedData[meal][index][field] = ''; // Очищаем значение поля
+            setMealData(updatedData);
+            setPrevInputStates(prevInputStates.slice(0, -1)); // Удаляем последнее состояние из списка
+        } else if (prevInputStatesExercise.length > 0) {
+            const updatedData = [...exerciseData];
+            const lastInputState = prevInputStatesExercise[prevInputStatesExercise.length - 1];
+            const { index, field } = lastInputState;
+            updatedData[index][field] = ''; // Очищаем значение поля
+            setExerciseData(updatedData);
+            setPrevInputStatesExercise(prevInputStatesExercise.slice(0, -1)); // Удаляем последнее состояние из списка
+        }
+    };
+
     return (
         <>
             <GlobalInputBaseStyles />
@@ -221,6 +241,7 @@ export const CalorieCounterProgram = () => {
                                         <input
                                             placeholder='Name'
                                             value={field.food}
+                                            onBlur={(e) => handleBlur(meal, index, 'food', e.target.value)}
                                             onChange={(e) => {
                                                 const updatedData = { ...mealData };
                                                 updatedData[meal][index].food = e.target.value;
@@ -234,6 +255,7 @@ export const CalorieCounterProgram = () => {
                                                 marginRight: '38px'
                                             }}
                                             value={field.calories}
+                                            onBlur={(e) => handleBlur(meal, index, 'calories', e.target.value)}
                                             onChange={(e) => {
                                                 const updatedData = { ...mealData };
                                                 updatedData[meal][index].calories = e.target.value;
@@ -244,7 +266,7 @@ export const CalorieCounterProgram = () => {
                                             sx={{
                                                 position: 'absolute',
                                                 right: -16,
-                                                marginTop: '-4px',                                                padding: '0',
+                                                marginTop: '-4px', padding: '0',
                                                 minWidth: '48px',
                                                 minHeight: '48px'
                                             }}
@@ -286,6 +308,7 @@ export const CalorieCounterProgram = () => {
                                     <input
                                         value={exercise.exercise}
                                         placeholder='Name'
+                                        onBlur={(e) => handleBlurExercise(index, 'exercise', e.target.value)}
                                         onChange={(e) => {
                                             const updatedData = [...exerciseData];
                                             updatedData[index].exercise = e.target.value;
@@ -299,6 +322,7 @@ export const CalorieCounterProgram = () => {
                                             marginRight: '38px'
                                         }}
                                         placeholder='200 cal'
+                                        onBlur={(e) => handleBlurExercise(index, 'calories', e.target.value)}
                                         onChange={(e) => {
                                             const updatedData = [...exerciseData];
                                             updatedData[index].calories = e.target.value;
