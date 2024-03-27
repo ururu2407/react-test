@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-test/static/css/main.41d36feb.css",
-    "main.js": "/react-test/static/js/main.561d54be.js",
+    "main.css": "/react-test/static/css/main.2c42c217.css",
+    "main.js": "/react-test/static/js/main.282427a4.js",
     "static/js/787.272af0be.chunk.js": "/react-test/static/js/787.272af0be.chunk.js",
     "index.html": "/react-test/index.html",
     "static/media/trailing-icon.svg": "/react-test/static/media/trailing-icon.e4f8d64c6d32313eea9c.svg",
     "static/media/bg-element.svg": "/react-test/static/media/bg-element.0a873d0e34ad9cb64cf5.svg",
     "static/media/tick.svg": "/react-test/static/media/tick.0908c8595c357cd5ae69.svg",
-    "main.41d36feb.css.map": "/react-test/static/css/main.41d36feb.css.map",
-    "main.561d54be.js.map": "/react-test/static/js/main.561d54be.js.map",
+    "main.2c42c217.css.map": "/react-test/static/css/main.2c42c217.css.map",
+    "main.282427a4.js.map": "/react-test/static/js/main.282427a4.js.map",
     "787.272af0be.chunk.js.map": "/react-test/static/js/787.272af0be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.41d36feb.css",
-    "static/js/main.561d54be.js"
+    "static/css/main.2c42c217.css",
+    "static/js/main.282427a4.js"
   ]
 }
