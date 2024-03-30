@@ -1,7 +1,13 @@
 @import './src/utils/colors';
 
+body {
+    padding: 0 !important;
+    overflow-y: scroll !important;
+}
+
 header {
     padding: 7px 0 8px;
+
     .navigation {
         padding: 0 6px 0 4px;
 
@@ -29,9 +35,41 @@ header {
         }
     }
 }
-.main{
+
+@media screen and (min-width: 600px) {
+    header {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+}
+
+@media screen and (min-width: 900px) {
+    header {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+}
+@media screen and (min-width: 1200px) {
+    header {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+}
+@media screen and (min-width: 1537px) {
+    header {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+}
+
+.main {
     margin-top: 76px;
 }
-footer{
+
+footer {
     margin-top: 64px;
 }

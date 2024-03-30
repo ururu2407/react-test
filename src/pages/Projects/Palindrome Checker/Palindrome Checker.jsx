@@ -14,7 +14,6 @@ export const PalindromeChecker = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
         <>
             <Box className='main'>
@@ -82,7 +81,7 @@ export const PalindromeChecker = () => {
                     <PalindromeCheckerDescription />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <PalindromeCheckerCode/>
+                    <PalindromeCheckerCode />
                 </TabPanel>
             </Box>
         </>

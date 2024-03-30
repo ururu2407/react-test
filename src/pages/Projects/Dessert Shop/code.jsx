@@ -222,7 +222,7 @@ export const DessertShopCode = () => {
             cartTaxes: 0,
             cartTotal: 0,
             items: [],
-            addToCartClicked: {}, 
+            addToCartClicked: {},
         });
         this.setState(prevState => ({
         }), () => {

@@ -23,7 +23,8 @@ import {
     MusicIcon,
     TextAaIcon,
     ArrowRight,
-    CakeIcon
+    CakeIcon,
+    TodoListIcon
 } from '../../utils/icons';
 
 export const Header = () => {
@@ -63,117 +64,125 @@ export const Header = () => {
                             open={open}
                             onClick={handleClose}
                         >
-                            <Box display={'grid'} width={'100%'} padding={'20px'} gap={'20px'}>
-                                <Box
-                                    display={'flex'}
-                                    justifyContent={'space-between'}
-                                    color="primary.light">
-                                    <Typography variant='headline' >
-                                        Projects
-                                    </Typography>
-                                    <Typography variant='headline'>
-                                        5
-                                    </Typography>
-                                </Box>
-                                <List sx={CustomListStyles.list} >
-                                    <Divider />
-                                    <ListItemButton sx={CustomListStyles.listItem}
-                                        to='/react-test/rpg' component={RouterLink}>
-                                        <Box display={'flex'} className='list-item' alignItems={'center'}>
-                                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
-                                                <SwordsIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={
-                                                <Typography variant='body'>Role Playing Game</Typography>
-                                            } />
-                                        </Box>
-                                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
-                                    </ListItemButton>
-                                    <Divider />
-                                    <ListItemButton sx={CustomListStyles.listItem}
-                                        to='/react-test/calorie-counter' component={RouterLink}>
-                                        <Box display={'flex'} className='list-item' alignItems={'center'}>
-                                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
-                                                <FlameIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={
-                                                <Typography variant='body'>Calorie Counter</Typography>
-                                            } />
-                                        </Box>
-                                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
-                                    </ListItemButton>
-                                    <Divider />
-                                    <ListItemButton sx={CustomListStyles.listItem}
-                                        to='/react-test/music-player' component={RouterLink}>
-                                        <Box display={'flex'} className='list-item' alignItems={'center'}>
-                                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
-                                                <MusicIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={
-                                                <Typography variant='body'>Music player</Typography>
-                                            } />
-                                        </Box>
-                                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
-                                    </ListItemButton>
-                                    <Divider />
-                                    <ListItemButton sx={CustomListStyles.listItem}
-                                        to='/react-test/palindrome-checker' component={RouterLink}>
-                                        <Box display={'flex'} className='list-item' alignItems={'center'}>
-                                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
-                                                <TextAaIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={
-                                                <Typography variant='body'>Palindrome checker</Typography>
-                                            } />
-                                        </Box>
-                                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
-                                    </ListItemButton>
-                                    <Divider />
-                                    <ListItemButton sx={CustomListStyles.listItem}
-                                        to='/react-test/dessert-shop' component={RouterLink}>
-                                        <Box display={'flex'} className='list-item' alignItems={'center'}>
-                                            <ListItemIcon sx={CustomListStyles.listItemIcon}>
-                                                <CakeIcon sx={{ fill: '#F2F2F2' }} />
-                                            </ListItemIcon>
-                                            <ListItemText primary={
-                                                <Typography variant='body'>Dessert shop</Typography>
-                                            } />
-                                        </Box>
-                                        <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
-                                    </ListItemButton>
-                                    <Divider />
-                                    {/*  <ListItemButton sx={{ paddingLeft: 0, minHeight: 55 }}>
-                        <ListItemIcon sx={{ minWidth: 40 }}>
-                            <MedalIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant='body'>Bulding football team cards</Typography>
-                        } />
-                    </ListItemButton>
-                    <Divider /> */}
-                                </List>
+                            <Box display={'grid'} width={'100%'} gap={'20px'}
+                                sx={{
+                                    padding: {xs: '20px', sm: '20px 36px', md: '20px 44px', lg: '20px 72px',
+                                xl: '20px 168px'},
+                                }}>
+                            <Box
+                                display={'flex'}
+                                justifyContent={'space-between'}
+                                color="primary.light">
+                                <Typography variant='headline' >
+                                    Projects
+                                </Typography>
+                                <Typography variant='headline'>
+                                    6
+                                </Typography>
                             </Box>
-                        </Backdrop>
-                    </nav>
-                    <nav className="nav-right">
-                        <Link className='li'
-                            underline='none'
-                            color="primary.contrastText"
-                            component={RouterLink}
-                            to="/be">
-                            <BehanceIcon />
-                        </Link>
-                        <Link className='li'
-                            underline='none'
-                            color="primary.contrastText"
-                            component={RouterLink}
-                            to="/git">
-                            <GithubIcon />
-                        </Link>
-                    </nav>
-                </Box>
-                <Divider sx={{ marginLeft: '20px', marginRight: '20px' }} />
-            </AppBar>
+                            <List sx={CustomListStyles.list} >
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/rpg' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <SwordsIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Role Playing Game</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/calorie-counter' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <FlameIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Calorie Counter</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/music-player' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <MusicIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Music player</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/palindrome-checker' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <TextAaIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Palindrome checker</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/dessert-shop' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <CakeIcon sx={{ fill: '#F2F2F2' }} />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Dessert shop</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                                <ListItemButton sx={CustomListStyles.listItem}
+                                    to='/react-test/todo-app' component={RouterLink}>
+                                    <Box display={'flex'} className='list-item' alignItems={'center'}>
+                                        <ListItemIcon sx={CustomListStyles.listItemIcon}>
+                                            <TodoListIcon sx={{ fill: '#F2F2F2' }} />
+                                        </ListItemIcon>
+                                        <ListItemText primary={
+                                            <Typography variant='body'>Todo app</Typography>
+                                        } />
+                                    </Box>
+                                    <ArrowRight className='arrow' sx={{ height: '9.5px', width: '6px', }} />
+                                </ListItemButton>
+                                <Divider />
+                            </List>
+                        </Box>
+                    </Backdrop>
+                </nav>
+                <nav className="nav-right">
+                    <Link className='li'
+                        underline='none'
+                        color="primary.contrastText"
+                        component={RouterLink}
+                        to="/be">
+                        <BehanceIcon />
+                    </Link>
+                    <Link className='li'
+                        underline='none'
+                        color="primary.contrastText"
+                        component={RouterLink}
+                        to="/git">
+                        <GithubIcon />
+                    </Link>
+                </nav>
+            </Box>
+            <Divider sx={{ marginLeft: '20px', marginRight: '20px' }} />
+        </AppBar >
         </>
     );
 };

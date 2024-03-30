@@ -1,8 +1,8 @@
-import { Button, Box, Typography, List, ListItemButton } from "@mui/material";
+import { Button, Box, Typography, List, ListItemButton, } from "@mui/material";
 import React, { useState, useRef, useEffect } from "react";
 import { DeleteIcon, DecorateElement, SkipBack, SkipForward, Play, Pause } from "../../../utils/icons";
 import "./MusicPlayer.scss";
-
+import { useTheme } from "@mui/material";
 export const MusicPlayerProgram = () => {
     const [currentSong, setCurrentSong] = useState(null);
     const [songHistory, setSongHistory] = useState([]);
@@ -209,273 +209,279 @@ export const MusicPlayerProgram = () => {
         const seconds = Math.floor(timeInSeconds % 60);
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     };
+    const theme = useTheme();
 
     return (
-        <Box>
-            <Box marginBottom={'20px'}>
-                <Typography
-                    variant='headline'
-                    color='primary.light'
-                >Music Player</Typography>
-            </Box>
-            <Box padding={'24px 12px'} position={"relative"} zIndex={1}
-                sx={{
-                    border: '1px solid',
-                    borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
-                    borderRadius: '16px',
-                    background: '#0D0D0C'
-                }}>
-                <DecorateElement
-                    sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        top: '0',
-                        left: '0',
-                        margin: '12px'
-                    }} />
-                <DecorateElement
-                    sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        top: '0',
-                        right: '0',
-                        margin: '12px'
-                    }} />
-                <DecorateElement
-                    sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        bottom: '0',
-                        left: '0',
-                        margin: '12px'
-                    }} />
-                <DecorateElement
-                    sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        bottom: '0',
-                        right: '0',
-                        margin: '12px'
-                    }} />
-                <Box display={"flex"}
-                    justifyContent={"center"}
-                    onClick={isPlaying ? pauseSong : playSong.bind(null, currentSong ? currentSong.id : allSongs[0].id)}>
-                    <Box
-                        height={'158px'}
-                        width={'158px'}
-                        sx={{
-                            border: '1px solid',
-                            borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
-                            borderRadius: '50%',
-                            overflow: 'hidden'
-                        }}>
-                        <img
-                            className={imageClass}
-                            width={'100%'}
-                            src="https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/quincy-larson-album-art.jpg" alt="" />
-                    </Box>
-                </Box>
-            </Box>
+        <Box gap={'48px'}
+            sx={{ display: { xs: 'grid', sm: 'flex' } }}>
             <Box
-                position={'relative'}
-                paddingTop={'54px'}
-                margin={'0 12px'}
-                marginTop={'-8px'}
-                zIndex={'0'}
                 sx={{
-                    border: '1px solid',
-                    borderTop: 'none',
-                    borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
-                    borderRadius: '0 0 12px 12px'
+                    [theme.breakpoints.up('sm')]: {
+                        maxWidth: '372px',
+                        width: '100%'
+                    }
                 }}>
-                <DecorateElement
+                <Box padding={'24px 12px'} position={"relative"} zIndex={1}
                     sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        bottom: '0',
-                        right: '0',
-                        margin: '12px'
-                    }} />
-                <DecorateElement
-                    sx={{
-                        fill: isPlaying ? '#E5CE71' : '#9A9693',
-                        width: '8px',
-                        maxHeight: '8px',
-                        position: 'absolute',
-                        bottom: '0',
-                        left: '0',
-                        margin: '12px'
-                    }} />
-                <Box padding={'0 5px'} textAlign={"center"} display={'grid'} gap={'4px'} marginBottom={'120px'}>
-                    <Typography variant="headline" color={isPlaying ? 'primary.primary' : 'primary.light'} fontWeight={'Bold'}>
-                        {currentSong ? currentSong.title : allSongs.length > 0 ? allSongs[0].title : "Title Song"}
-                    </Typography>
-                    <Typography variant="body2" color={'primary.contrastText'} fontWeight={'Light'}>
-                        {currentSong ? currentSong.artist : allSongs.length > 0 ? allSongs[0].artist : "Author Song"}
-                    </Typography>
-                </Box>
-                <Box textAlign={'center'} padding={'0 26px 0 32px'}>
-                    <input
-                        type="range"
-                        value={currentTime}
-                        min={0}
-                        max={duration || 0}
-                        onChange={handleSeek}
-                        onMouseDown={() => setIsSeeking(true)}
-                        onMouseUp={handleSeekEnd}
-                        onTouchStart={() => setIsSeeking(true)}
-                        onTouchEnd={handleSeekEnd}
-                        onTouchMove={handleSeek}
-                        style={{
-                            padding: '0px',
-                            borderColor: '#CBC9C8',
-                            height: '1px',
-                            width: '100%',
-                            opacity: '1',
-                            accentColor: isPlaying ? '#E5CE71' : '#CBC9C8'
-                        }}
-                    />
-                    <Box display={"flex"} justifyContent={"space-between"} marginTop={'9px'}>
-                        <Typography variant="body2" color={isPlaying ? 'primary.primary' : 'primary.contrastText'}>{formatTime(currentTime)}</Typography>
-                        <Typography variant="body2" color={isPlaying ? 'primary.primary' : 'primary.contrastText'}>{formatTime(duration)}</Typography>
+                        border: '1px solid',
+                        borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
+                        borderRadius: '16px',
+                        background: '#0D0D0C',
+                    }}>
+                    <DecorateElement
+                        sx={{
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            margin: '12px'
+                        }} />
+                    <DecorateElement
+                        sx={{
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            top: '0',
+                            right: '0',
+                            margin: '12px'
+                        }} />
+                    <DecorateElement
+                        sx={{
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            bottom: '0',
+                            left: '0',
+                            margin: '12px'
+                        }} />
+                    <DecorateElement
+                        sx={{
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            bottom: '0',
+                            right: '0',
+                            margin: '12px'
+                        }} />
+                    <Box display={"flex"}
+                        justifyContent={"center"}
+                        onClick={isPlaying ? pauseSong : playSong.bind(null, currentSong ? currentSong.id : allSongs[0].id)}>
+                        <Box
+                            height={'158px'}
+                            width={'158px'}
+                            sx={{
+                                border: '1px solid',
+                                borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
+                                borderRadius: '50%',
+                                overflow: 'hidden'
+                            }}>
+                            <img
+                                className={imageClass}
+                                width={'100%'}
+                                src="https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/quincy-larson-album-art.jpg" alt="" />
+                        </Box>
                     </Box>
                 </Box>
-                <Box display={"flex"}
-                    justifyContent={"center"}
-                    marginTop={'32px'}
-                    marginBottom={'48px'}
-                    gap={'8px'}
-                >
-                    <Button onClick={playPreviousSong}
+                <Box
+                    position={'relative'}
+                    paddingTop={'54px'}
+                    margin={'0 12px'}
+                    marginTop={'-8px'}
+                    zIndex={'0'}
+                    sx={{
+                        border: '1px solid',
+                        borderTop: 'none',
+                        borderColor: isPlaying ? 'primary.primary' : 'primary.contrastText',
+                        borderRadius: '0 0 12px 12px'
+                    }}>
+                    <DecorateElement
                         sx={{
-                            '&:hover': {
-                                background: 'none',
-                            }
-                        }}>
-                        <SkipBack sx={{
-                            fill: isPlaying ? '#E5CE71' : '#f2f2f2',
-                            width: '32px',
-                            height: '32px',
-                            transition: 'all 0.2s',
-                            '&:hover': {
-                                fill: '#E5CE71',
-                                transition: 'all 0.2s'
-                            }
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            bottom: '0',
+                            right: '0',
+                            margin: '12px'
                         }} />
-                    </Button>
-                    <Button
+                    <DecorateElement
                         sx={{
-                            height: '68px',
-                            width: '68px',
-                            border: '1px solid',
-                            borderColor: isPlaying ? 'primary.primary' : 'primary.light',
-                            borderRadius: '50%',
-                            alignContent: 'center',
-                            background: isPlaying ? '#E5CE71' : 'none',
-                            padding: isPlaying ? '0' : '0px 8px 0px 13px',
-                            '&:hover': {
-                                background: isPlaying ? '#E5CE71' : 'rgba(242, 242, 242, 0.08)',
-                            },
-                            '&:focus': {
-                                background: isPlaying ? '#E5CE71' : 'rgba(242, 242, 242, 0.12)',
-                            }
-                        }}
-                        onClick={isPlaying ? pauseSong : playSong.bind(null, currentSong ? currentSong.id : allSongs[0].id)}>
-                        {!isPlaying ? (
-                            <Play sx={{ width: '32px', height: '32px' }} />
-                        ) : (
-                            <Pause sx={{ width: '32px', height: '32px' }} />
-                        )}
-                    </Button>
-                    <Button onClick={playNextSong}
-                        sx={{
-                            '&:hover': {
-                                background: 'none',
-                            }
-                        }}>
-                        <SkipForward sx={{
-                            fill: isPlaying ? '#E5CE71' : '#f2f2f2',
-                            width: '32px',
-                            height: '32px',
-                            transition: 'all 0.2s',
-                            '&:hover': {
-                                fill: '#E5CE71',
-                                transition: 'all 0.2s'
-                            }
+                            fill: isPlaying ? '#E5CE71' : '#9A9693',
+                            width: '8px',
+                            maxHeight: '8px',
+                            position: 'absolute',
+                            bottom: '0',
+                            left: '0',
+                            margin: '12px'
                         }} />
-                    </Button>
+                    <Box padding={'0 5px'} textAlign={"center"} display={'grid'} gap={'4px'} marginBottom={'120px'}>
+                        <Typography variant="headline" color={isPlaying ? 'primary.primary' : 'primary.light'} fontWeight={'Bold'}>
+                            {currentSong ? currentSong.title : allSongs.length > 0 ? allSongs[0].title : "Title Song"}
+                        </Typography>
+                        <Typography variant="body2" color={'primary.contrastText'} fontWeight={'Light'}>
+                            {currentSong ? currentSong.artist : allSongs.length > 0 ? allSongs[0].artist : "Author Song"}
+                        </Typography>
+                    </Box>
+                    <Box textAlign={'center'} padding={'0 26px 0 32px'}>
+                        <input
+                            type="range"
+                            value={currentTime}
+                            min={0}
+                            max={duration || 0}
+                            onChange={handleSeek}
+                            onMouseDown={() => setIsSeeking(true)}
+                            onMouseUp={handleSeekEnd}
+                            onTouchStart={() => setIsSeeking(true)}
+                            onTouchEnd={handleSeekEnd}
+                            onTouchMove={handleSeek}
+                            style={{
+                                padding: '0px',
+                                borderColor: '#CBC9C8',
+                                height: '1px',
+                                width: '100%',
+                                opacity: '1',
+                                accentColor: isPlaying ? '#E5CE71' : '#CBC9C8'
+                            }}
+                        />
+                        <Box display={"flex"} justifyContent={"space-between"} marginTop={'9px'}>
+                            <Typography variant="body2" color={isPlaying ? 'primary.primary' : 'primary.contrastText'}>{formatTime(currentTime)}</Typography>
+                            <Typography variant="body2" color={isPlaying ? 'primary.primary' : 'primary.contrastText'}>{formatTime(duration)}</Typography>
+                        </Box>
+                    </Box>
+                    <Box display={"flex"}
+                        justifyContent={"center"}
+                        marginTop={'32px'}
+                        marginBottom={'48px'}
+                        gap={'8px'}
+                    >
+                        <Button onClick={playPreviousSong}
+                            sx={{
+                                '&:hover': {
+                                    background: 'none',
+                                }
+                            }}>
+                            <SkipBack sx={{
+                                fill: isPlaying ? '#E5CE71' : '#f2f2f2',
+                                width: '32px',
+                                height: '32px',
+                                transition: 'all 0.2s',
+                                '&:hover': {
+                                    fill: '#E5CE71',
+                                    transition: 'all 0.2s'
+                                }
+                            }} />
+                        </Button>
+                        <Button
+                            sx={{
+                                height: '68px',
+                                width: '68px',
+                                border: '1px solid',
+                                borderColor: isPlaying ? 'primary.primary' : 'primary.light',
+                                borderRadius: '50%',
+                                alignContent: 'center',
+                                background: isPlaying ? '#E5CE71' : 'none',
+                                padding: isPlaying ? '0' : '0px 8px 0px 13px',
+                                '&:hover': {
+                                    background: isPlaying ? '#E5CE71' : 'rgba(242, 242, 242, 0.08)',
+                                },
+                                '&:focus': {
+                                    background: isPlaying ? '#E5CE71' : 'rgba(242, 242, 242, 0.12)',
+                                }
+                            }}
+                            onClick={isPlaying ? pauseSong : playSong.bind(null, currentSong ? currentSong.id : allSongs[0].id)}>
+                            {!isPlaying ? (
+                                <Play sx={{ width: '32px', height: '32px' }} />
+                            ) : (
+                                <Pause sx={{ width: '32px', height: '32px' }} />
+                            )}
+                        </Button>
+                        <Button onClick={playNextSong}
+                            sx={{
+                                '&:hover': {
+                                    background: 'none',
+                                }
+                            }}>
+                            <SkipForward sx={{
+                                fill: isPlaying ? '#E5CE71' : '#f2f2f2',
+                                width: '32px',
+                                height: '32px',
+                                transition: 'all 0.2s',
+                                '&:hover': {
+                                    fill: '#E5CE71',
+                                    transition: 'all 0.2s'
+                                }
+                            }} />
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
-            <Box marginBottom={'20px'} marginTop={'48px'}>
-                <Typography variant="headline" color={'primary.light'} >Playlist</Typography>
-            </Box>
-            <List sx={{ display: 'grid', gap: '20px' }}>
-                {allSongs.map((song) => (
-                    <ListItemButton display='flex' sx={{ padding: '0', gap: '32px' }} key={song.id}>
-                        <Box
-                            width='100%'
-                            display="flex"
-                            justifyContent={"space-between"}
-                            sx={{
-                                height: '48px',
-                                ':hover': {
-                                    '& .list': {
-                                        color: 'primary.primary'
-                                    }
-                                },
-                                color: currentSong && song.id === currentSong.id ? 'primary.primary' : 'primary.light'
-                            }}
-                            whiteSpace={"nowrap"}
-                            overflow={"hidden"}
-                            textOverflow={'ellipsis'}
-                            onClick={() => playSong(song.id)}
-                        >
-                            <Box display={'block'}
+            <Box width={'-webkit-fill-available'}>
+                <Box marginBottom={'20px'}>
+                    <Typography variant="headline" color={'primary.light'} >Playlist</Typography>
+                </Box>
+                <List sx={{ display: 'grid', gap: '20px' }}>
+                    {allSongs.map((song) => (
+                        <ListItemButton display='flex' sx={{ padding: '0', gap: '32px' }} key={song.id}>
+                            <Box
+                                width='100%'
+                                display="flex"
+                                justifyContent={"space-between"}
+                                sx={{
+                                    height: '48px',
+                                    ':hover': {
+                                        '& .list': {
+                                            color: 'primary.primary'
+                                        }
+                                    },
+                                    color: currentSong && song.id === currentSong.id ? 'primary.primary' : 'primary.light'
+                                }}
                                 whiteSpace={"nowrap"}
                                 overflow={"hidden"}
                                 textOverflow={'ellipsis'}
-                                className='list'>
-                                <Typography variant="body2"
-                                    fontWeight='Medium'
+                                onClick={() => playSong(song.id)}
+                            >
+                                <Box display={'block'}
                                     whiteSpace={"nowrap"}
                                     overflow={"hidden"}
                                     textOverflow={'ellipsis'}
-                                >{song.title}</Typography>
-                                <Typography
-                                    variant="body3"
-                                    fontWeight='Light'
-                                    sx={{
+                                    className='list'>
+                                    <Typography variant="body2"
+                                        fontWeight='Medium'
+                                        whiteSpace={"nowrap"}
+                                        overflow={"hidden"}
+                                        textOverflow={'ellipsis'}
+                                    >{song.title}</Typography>
+                                    <Typography
+                                        variant="body3"
+                                        fontWeight='Light'
+                                        sx={{
 
-                                        color: currentSong && song.id === currentSong.id ? 'primary.primary' : 'primary.contrastText'
-                                    }}>{song.artist}</Typography>
+                                            color: currentSong && song.id === currentSong.id ? 'primary.primary' : 'primary.contrastText'
+                                        }}>{song.artist}</Typography>
+                                </Box>
                             </Box>
-                        </Box>
-                        <Box display={"flex"} alignItems={'center'}>
-                            <Typography variant="body2"
-                                fontWeight='Light'
-                                color='primary.contrastText'>{song.duration}</Typography>
-                            <Button
-                                sx={{
-                                    padding: '0px',
-                                    minWidth: '48px',
-                                    minHeight: '48px'
-                                }} onClick={() => deleteSong(song.id)} aria-label={`Delete ${song.title}`}>
-                                <DeleteIcon />
-                            </Button>
-                        </Box>
-                    </ListItemButton>
-                ))}
-            </List>
+                            <Box display={"flex"} alignItems={'center'}>
+                                <Typography variant="body2"
+                                    fontWeight='Light'
+                                    color='primary.contrastText'>{song.duration}</Typography>
+                                <Button
+                                    sx={{
+                                        padding: '0px',
+                                        minWidth: '48px',
+                                        minHeight: '48px'
+                                    }} onClick={() => deleteSong(song.id)} aria-label={`Delete ${song.title}`}>
+                                    <DeleteIcon />
+                                </Button>
+                            </Box>
+                        </ListItemButton>
+                    ))}
+                </List>
+            </Box>
         </Box>
     );
 };

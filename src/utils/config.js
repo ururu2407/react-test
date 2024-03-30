@@ -22,7 +22,7 @@ export const shades = {
         80: "#D0D0C8",
         70: "#B8B8AD",
         60: "#9F9F93",
-        50: "#868679",
+        50: "#737373",
         40: "#65655D",
         30: "#4F4F4A",
         20: "#343432",
@@ -75,7 +75,8 @@ const theme = createTheme({
             main: shades.surface[5],
             light: shades.surface[95],
             contrastText: shades.surface[60],
-            surfaceContainerLow: shades.neutralVariant[10]
+            surfaceContainerLow: shades.neutralVariant[10],
+            surface: shades.neutral[50],
         },
         text: {
             primary: shades.surface[60],

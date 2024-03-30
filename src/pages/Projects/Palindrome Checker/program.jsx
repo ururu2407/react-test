@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-// import { GlobalInputBaseStyles } from '../../../components/customs';
-
+import { useTheme } from '@mui/material';
 export const PalindromeCheckerProgram = () => {
     const inputRef = useRef()
     const [resultBool, setResultBoll] = useState(null)
@@ -45,15 +44,12 @@ export const PalindromeCheckerProgram = () => {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
-
+    const theme = useTheme()
     return (
         <>
             {/* <GlobalInputBaseStyles /> */}
-            <Box display='grid' gap='20px'>
-                <Typography
-                    variant='headline'
-                    color='primary.light'
-                >Palindrome Checker</Typography>
+            <Box display='grid' gap='20px'
+            sx={{ width: { xs: '100%', md: '494px' } }}>
                 <Box display='grid'
                     padding='24px 16px'
                     gap='24px'

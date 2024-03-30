@@ -43,12 +43,18 @@ export const Fifth = () => {
                                 fontWeight='Light'
                                 color='primary.light'>Teambuilding</Typography>
                             <Typography className='dash green'
-                                sx={{ padding: '12px 15px' }}
+                                sx={{
+                                    padding: '12px 15px',
+                                    marginLeft: { sm: '60px', md: '67px' }
+                                }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Project theme selection</Typography>
                             <Typography className='dash green'
-                                sx={{ padding: '12px 15px' }}
+                                sx={{
+                                    padding: '12px 15px',
+                                    marginLeft: { sm: '120px', md: '180.5px' }
+                                }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Develop project plan</Typography>
@@ -76,7 +82,10 @@ export const Fifth = () => {
                                 fontWeight='Light'
                                 color='primary.light'>Execution of work</Typography>
                             <Typography className='dash blue'
-                                sx={{ padding: '12px 15px' }}
+                                sx={{
+                                    padding: '12px 15px',
+                                    marginLeft: { sm: '60px', md: '67px' }
+                                }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Progress reporting</Typography>
@@ -102,7 +111,10 @@ export const Fifth = () => {
                                 fontWeight='Light'
                                 color='primary.light'>Project defence</Typography>
                             <Typography className='dash purple'
-                                sx={{ padding: '12px 15px' }}
+                                sx={{
+                                    padding: '12px 15px',
+                                    marginLeft: { sm: '60px', md: '67px' }
+                                }}
                                 variant='body2'
                                 fontWeight='Light'
                                 color='primary.light'>Submitting a project report</Typography>

@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import {useTheme} from '@mui/material';
 export const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
 
@@ -32,17 +32,12 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 export const CustomListStyles = {
-    list: {
-        position: 'relative',
-        overflow: 'hidden',
-        color: "primary.light",
-        padding: 0,
-    },
     listItem: {
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        padding: '8px 0px',
+        padding: '0px 0px',
+        borderRadius: '24px',
         color: 'primary.contrastText',
         minHeight: 55,
         overflow: 'hidden',
@@ -57,9 +52,15 @@ export const CustomListStyles = {
 
             paddingRight: '5px',
         },
+        '.list-item': {
+            transform: 'translateX(0px)',
+            transition: 'all 0.2s ease',
+
+        },
         '&:hover, &:focus': {
             color: 'primary.light',
             transition: 'all 0.2s ease',
+            backgroundColor: 'rgba(255, 255, 255, 0)',
 
             '& .list-item': {
                 transform: 'translateX(-40px)', // Изменение цвета фона при ховере
@@ -130,6 +131,12 @@ export const CustomTab = (props) => {
                     alignItems: 'baseline',
                     padding: '16px 0',
                     paddingLeft: '0px',
+                },
+                '& .custom-second-label': {
+                    // Стили для Typography внутри таба
+                    transform: 'translateX(0px)',
+
+                    transition: 'all 0.2s'
                 },
                 '& .custom-first-label': {
                     // Стили для Typography внутри таба
@@ -213,18 +220,19 @@ export const GlobalInputBaseStyles = () => (
     </style>
 );
 
-export const OutlinedButton = ({ buttonText, onClick, padding = '8px 16px', width }) => {
+export const OutlinedButton = ({ buttonText, onClick, padding = '8px 16px',  width = 'auto' }) => {
     return (
         <Button
             sx={{
                 minHeight: '40px',
+                maxWidth: width, // добавляем настраиваемую ширину
+                width: '100%',
                 border: '1px solid',
                 borderColor: 'outlined',
                 color: 'primary.primary',
                 borderRadius: '12px',
                 textTransform: 'none',
                 padding: padding, // используем переданное значение padding
-                width: width, // используем переданное значение width
                 fontFamily: `"Inconsolata", sans-serif`,
                 fontSize: '16px',
                 lineHeight: '1.42',
@@ -281,11 +289,13 @@ export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px', widt
     );
 };
 
-export const TextButton = ({ buttonText, onClick, padding = '12px 20px' }) => {
+export const TextButton = ({ buttonText, onClick, padding = '12px 20px',  width = 'auto', }) => {
     return (
         <Button
             sx={{
                 maxHeight: '40px',
+                maxWidth: width, // добавляем настраиваемую ширину
+                width: '100%',
                 backgroundColor: 'none',
                 color: 'primary.primary',
                 borderRadius: '12px',

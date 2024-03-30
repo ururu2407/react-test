@@ -4,22 +4,20 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { TabPanel, CustomTab, a11yProps } from '../../../components/customs';
 import { ArrowRight } from '../../../utils/icons';
-import { MusicPlayerProgram } from './program';
-import { MusicPlayerDescription } from './description';
-import { MusicPlayerCode } from './code';
-import { useTheme } from '@mui/material/styles';
+import { TodoList } from './program';
+import { TodoDescription } from './description';
+import { TodoCode } from './code';
 
-export const MusicPlayer = () => {
+export const TodoApp = () => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const theme = useTheme()
+
     return (
         <>
-            <Box className='main'
-                >
+            <Box className='main'>
                 <Tabs
                     orientation="vertical"
                     variant="scrollable"
@@ -38,7 +36,7 @@ export const MusicPlayer = () => {
                                     variant='body4'>
                                     01
                                 </Typography>
-                                <Typography className='custom-second-label' variant='body'>Music Player</Typography>
+                                <Typography className='custom-second-label' variant='body'>Events</Typography>
                             </Box>
                             <ArrowRight className='custom-arrow-label' sx={{ height: '9.5px', width: '6px', }} />
                         </Box>
@@ -78,13 +76,13 @@ export const MusicPlayer = () => {
                     } {...a11yProps(2)} />
                 </Tabs>
                 <TabPanel sx={{ padding: '0px' }} value={value} index={0}>
-                    <MusicPlayerProgram />
+                    <TodoList />
                 </TabPanel>
                 <TabPanel sx={{ padding: '0px' }} value={value} index={1}>
-                    <MusicPlayerDescription />
+                    <TodoDescription />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <MusicPlayerCode />
+                    <TodoCode/>
                 </TabPanel>
             </Box>
         </>

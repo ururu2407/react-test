@@ -7,6 +7,7 @@ import { ArrowRight } from '../../../utils/icons';
 import { CalorieCounterProgram } from './program';
 import { CalorieCounterDescription } from './description';
 import { CalorieCounterCode } from './code';
+import { useTheme } from '@mui/material/styles';
 
 export const CalorieCounter = () => {
     const [value, setValue] = React.useState(0);
@@ -14,7 +15,7 @@ export const CalorieCounter = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    const theme = useTheme()
     return (
         <>
             <Box className='main'>
@@ -36,7 +37,7 @@ export const CalorieCounter = () => {
                                     variant='body4'>
                                     01
                                 </Typography>
-                                <Typography className='custom-second-label' variant='body'>Calorie Counter</Typography>
+                                <Typography className='custom-second-label' variant='body'>Calorie calculator</Typography>
                             </Box>
                             <ArrowRight className='custom-arrow-label' sx={{ height: '9.5px', width: '6px', }} />
                         </Box>
@@ -82,7 +83,7 @@ export const CalorieCounter = () => {
                     <CalorieCounterDescription />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <CalorieCounterCode/>
+                    <CalorieCounterCode />
                 </TabPanel>
             </Box>
         </>

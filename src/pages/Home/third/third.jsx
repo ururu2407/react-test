@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Typography, List, ListItemText } from '@mui/material';
-
+import { useTheme } from '@emotion/react';
 export const Third = () => {
+    const theme = useTheme();
     return (
         <>
             <Box display={'grid'} gap='20px'>
@@ -22,8 +23,13 @@ export const Third = () => {
                 >During our project practice at KROK, we worked on a number of exciting projects that spanned web and mobile platforms. Our team focused on developing applications using Java.<br /><br />Our work included creating a variety of programs, from games to practical utilities, that expanded the capabilities of JavaScript programming.
                 </Typography>
                 <Box>
-                    <List sx={{display: 'grid', gap: '20px'}}>
-                        <ListItemText
+                    <List sx={{display: 'grid', gap: '20px',
+                    [theme.breakpoints.up('sm')]: {
+                        display: 'flex',
+                        gap: '48px',
+                    }
+                    }}>
+                        <ListItemText sx={{flex: 'none'}}
                             primary={
                                 <Typography fontWeight='Light' 
                                 color='primary.contrastText' 
@@ -35,7 +41,7 @@ export const Third = () => {
                                 variant='body1'>Web & Mobile</Typography>
                             }>
                         </ListItemText>
-                        <ListItemText
+                        <ListItemText sx={{flex: 'none'}}
                             primary={
                                 <Typography fontWeight='Light' 
                                 color='primary.contrastText' 
@@ -48,7 +54,7 @@ export const Third = () => {
                             }>
 
                         </ListItemText>
-                        <ListItemText
+                        <ListItemText sx={{flex: 'none'}}
                             primary={
                                 <Typography fontWeight='Light' 
                                 color='primary.contrastText' 

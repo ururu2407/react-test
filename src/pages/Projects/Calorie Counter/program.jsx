@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Button, Divider, Tooltip } from '@mui/material';
 import { DeleteIcon, GoalIcon, FoodIcon, FlameRedIcon, InfoIcon } from '../../../utils/icons';
 import { GlobalInputBaseStyles, PrimaryButton, TextButton } from '../../../components/customs';
+import { useTheme } from '@mui/material/styles';
 
 export const CalorieCounterProgram = () => {
     const [mealData, setMealData] = useState({
@@ -155,16 +156,21 @@ export const CalorieCounterProgram = () => {
             setPrevInputStatesExercise(prevInputStatesExercise.slice(0, -1)); // Удаляем последнее состояние из списка
         }
     };
-
+    const theme = useTheme()
     return (
         <>
             <GlobalInputBaseStyles />
-            <Box display='grid' gap={'32px'}>
-                <Typography
-                    variant='headline'
-                    color='primary.light'
-                >Calorie Counter</Typography>
-                <Box display={'flex'}>
+            <Box
+                sx={{
+                    display: { xs: 'grid', lg: 'flex' },
+                    gap: { xs: '32px', lg: '42px' },
+                }}>
+                <Box display={'flex'} gap={'16px'}
+                    sx={{
+                        [theme.breakpoints.up('lg')]: {
+                            flexDirection: 'column',
+                        }
+                    }}>
                     <Box style={containerStyles} title='asd'>
                         <Tooltip title='Remaining = Goal - Food + Exercise' margin='0'>
                             <Box style={beforeStyles} flexDirection={'column'}>
@@ -178,9 +184,16 @@ export const CalorieCounterProgram = () => {
                     </Box>
                     <Box
                         color={'primary.light'}
-                        display={'grid'} gap={'16px'}
+                        display={'grid'}
+                        sx={{
+                            justifyContent: { lg: 'center' },
+                            gap: {
+                                xs: '16px',
+                                sm: '24px'
+                            }
+                        }}
                     >
-                        <Box>
+                        <Box >
                             <Box display={'flex'} gap='8px'>
                                 <GoalIcon />
                                 <Typography variant='body2' fontWeight={'Light'}>Base goal</Typography>
@@ -203,7 +216,9 @@ export const CalorieCounterProgram = () => {
                         </Box>
                     </Box>
                 </Box>
-                <Box padding={'16px'} backgroundColor={'primary.surfaceContainerLow'} border={'1px solid'} borderRadius={'12px'} borderColor={'divider'}>
+                <Box padding={'16px'} backgroundColor={'primary.surfaceContainerLow'}
+                    border={'1px solid'} borderRadius={'12px'} borderColor={'divider'}
+                    sx={{ width: { lg: '100%' } }}>
                     <Box>
                         <Box
                             display={'flex'}

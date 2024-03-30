@@ -38,11 +38,7 @@ export const Slider = ({ img1, img2 }) => {
     };
 
     return (
-        <Box sx={{
-            [theme.breakpoints.only('md')]: {
-                width: '700px',
-            }
-        }}>
+        <Box >
             <div
                 className="slider-container"
                 borderRadius="12px"
@@ -128,7 +124,7 @@ export class DessertShopProgram extends Component {
             cartItemsHeight: 0,
             itemsInCart: {},
             addToCartClicked: {},
-            removeClicked: {}, 
+            removeClicked: {},
 
         };
     }
@@ -246,7 +242,7 @@ export class DessertShopProgram extends Component {
 
     addItem = (id, count) => {
         const product = this.products.find(item => item.id === id);
-    
+
         if (product) {
             const existingItemIndex = this.state.items.findIndex(item => item.id === id);
             if (existingItemIndex !== -1) {
@@ -255,7 +251,7 @@ export class DessertShopProgram extends Component {
                 this.setState({
                     items: updatedItems,
                     addToCartClicked: { ...this.state.addToCartClicked, [id]: true },
-                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1 
+                    totalNumberOfItems: this.state.totalNumberOfItems + count - 1
                 }, () => {
                     this.addToCart(product.price * count);
                 });
@@ -346,22 +342,22 @@ export class DessertShopProgram extends Component {
     }
     render() {
         const filteredProducts = this.products.filter(product => product.category === this.state.selectedCategory);
-
         return (
             <>
-                <Box marginBottom={'20px'}>
-                    <Typography
-                        variant='headline'
-                        color='primary.light'
-                    >Dessert Shop</Typography>
-                </Box>
-                <Box display={'grid'} gap={'20px'}>
-                    <Box color={'primary.light'}
+                <Box sx={{
+                    display: { xs: 'grid', md: 'flex' },
+                    justifyContent: 'space-between',
+                    flexDirection: 'row-reverse',
+                    gap: { xs: '40px', md: '48px', lg: '134px', xl: '124px' },
+                }} 
+                >
+                    <Box  color={'primary.light'}
                         borderRadius={'16px'}
                         boxShadow={'0px 0px 4px 0px #000000'}
                         border={'1px solid #1A1A19'}
                         padding={'24px 16px 16px'}
                         height={'fit-content'}
+                        width={'-webkit-fill-available'}
                     >
                         <Box
                             position={'relative'}
@@ -414,112 +410,137 @@ export class DessertShopProgram extends Component {
                             </Box>
                         </Box>
                     </Box>
-                    <Box display='flex' flexWrap={'wrap'} justifyContent={'space-around'}>
-                        <button className={this.state.selectedCategory === 'Cupcake' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Cupcake')}>
-                            <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
-                                <Box className='icon' width={'48px'}
-                                    height={'48px'}
-                                    display={'flex'}
-                                    justifyContent={'center'}
-                                    alignItems={'center'}>
-                                    <CakeIcon />
-                                </Box>
-                                <Typography className='category-text' variant='body3' fontWeight={'Light'} >Cupcakes</Typography>
-                            </Box>
-                        </button>
-                        <button className={this.state.selectedCategory === 'Macaroon' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Macaroon')}>
-                            <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
-                                <Box className='icon' width={'48px'}
-                                    height={'48px'}
-                                    display={'flex'}
-                                    justifyContent={'center'}
-                                    alignItems={'center'}>
-                                    <MacaroonIcon />
-                                </Box>
-                                <Typography className='category-text' variant='body3' fontWeight={'Light'} >Macaroons</Typography>
-                            </Box>
-                        </button>
-                        <button className={this.state.selectedCategory === 'Pretzel' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Pretzel')}>
-                            <Box className='category-icon'>
-                                <Box className='icon'>
-                                    <PretzelIcon />
-                                </Box>
-                                <Typography className='category-text' variant='body3' fontWeight={'Light'} >Pretzels</Typography>
-                            </Box>
-                        </button>
-                        <button className={this.state.selectedCategory === 'Ice Cream' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Ice Cream')}>
-                            <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
-                                <Box className='icon' width={'48px'}
-                                    height={'48px'}
-                                    display={'flex'}
-                                    justifyContent={'center'}
-                                    alignItems={'center'}>
-                                    <IceCreamIcon />
-                                </Box>
-                                <Typography className='category-text' variant='body3' fontWeight={'Light'}>Ice Cream</Typography>
-                            </Box>
-                        </button>
-                    </Box>
-                    <Box display={'flex'} flexWrap={'wrap'} gap={'20px'}>
-                        {filteredProducts.map(({ id, img1, img2, name, price, descriprion }) => (
-                            <Box key={id} display={'grid'} gap={'20px'}
-                            >
-                                <Slider img1={img1} img2={img2} />
-                                <Box display={'grid'} gap={'8px'}>
-                                    <Box color={'primary.light'} display={'flex'} justifyContent={'space-between'}>
-                                        <Typography variant='title' fontWeight={'Medium'}>{name}</Typography>
-                                        <Box display={'flex'} alignItems={'end'}>
-                                            <Typography variant='title'
-                                                color={'primary.primary'}
-                                                fontWeight={'Medium'}
-                                                fontSize={'13px'}
-                                            >$</Typography>
-                                            <Typography fontWeight={'Medium'} variant='title'>{price}</Typography>
-                                        </Box>
+                    <Box  display={'grid'} gap={'40px'}
+                    sx={{ 
+                        maxWidth: {
+                            xs: '100%',
+                            md: '456px',
+                            lg: '526px',
+                            xl: '566px',
+                        }
+                    }}>
+                        <Box display='flex' flexWrap={'wrap'}
+                            sx={{
+                                justifyContent: {
+                                    xs: 'space-around',
+                                    sm: 'center',
+                                    md: 'space-between',
+                                },
+                                gap: {
+                                    xs: '0px',
+                                    sm: '48px',
+                                    md: '0px',
+                                }
+                            }}>
+                            <button className={this.state.selectedCategory === 'Cupcake' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Cupcake')}>
+                                <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
+                                    <Box className='icon' width={'48px'}
+                                        height={'48px'}
+                                        display={'flex'}
+                                        justifyContent={'center'}
+                                        alignItems={'center'}>
+                                        <CakeIcon />
                                     </Box>
-                                    <Typography variant='body2'
-                                        color={'primary.light'}
-                                        fontWeight={'Light'}>{descriprion}</Typography>
+                                    <Typography className='category-text' variant='body3' fontWeight={'Light'} >Cupcakes</Typography>
                                 </Box>
-                                <Box display={'flex'} justifyContent={'space-between'} gap={'24px'}>
-                                    <Box display={'flex'} alignItems={'center'} gap={'20px'}>
-                                        <button className='btn'
-                                            onClick={() => this.setState(prevState => ({ addToCartClicked: { ...this.state.addToCartClicked, [id]: false }, itemCounts: { ...prevState.itemCounts, [id]: (prevState.itemCounts[id] || 1) - 1 } }))} disabled={this.state.itemCounts[id] <= 1}
-                                        >
-                                            <MinusIcon />
-                                        </button>
-                                        <Typography variant='body1'
-                                            color={'primary.light'}
-                                            fontWeight={'Medium'}>{(this.state.itemCounts[id] || 1).toString().padStart(2, '0')}</Typography>
-                                        <button className='btn'
-                                            onClick={() => this.setState(prevState => ({ addToCartClicked: { ...this.state.addToCartClicked, [id]: false }, itemCounts: { ...prevState.itemCounts, [id]: (prevState.itemCounts[id] || 1) + 1 } }))}
-                                        >
-                                            <PlusIcon />
-                                        </button>
+                            </button>
+                            <button className={this.state.selectedCategory === 'Macaroon' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Macaroon')}>
+                                <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
+                                    <Box className='icon' width={'48px'}
+                                        height={'48px'}
+                                        display={'flex'}
+                                        justifyContent={'center'}
+                                        alignItems={'center'}>
+                                        <MacaroonIcon />
                                     </Box>
-                                    {!this.state.addToCartClicked[id] ? (
-                                        <PrimaryButton
-                                            id={`add-to-cart-${id}`}
-                                            buttonText={'Add to cart'}
-                                            width='196px'
-                                            height='48px'
-                                            onClick={() => this.addItem(id, this.state.itemCounts[id] || 1)}
-                                        />
-                                    ) : (
-                                        <button className={!this.state.removeClicked[id] ? 'remove-btn' : 'remove-btn clicked'}
-                                            onClick={() => this.removeItem(id)}
-                                        >
-                                            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} gap={'8px'}>
-                                                <ShoppingIcon />
-                                                <Typography variant='label1' color={'mintGreen'}>Added</Typography>
+                                    <Typography className='category-text' variant='body3' fontWeight={'Light'} >Macaroons</Typography>
+                                </Box>
+                            </button>
+                            <button className={this.state.selectedCategory === 'Pretzel' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Pretzel')}>
+                                <Box className='category-icon'>
+                                    <Box className='icon'>
+                                        <PretzelIcon />
+                                    </Box>
+                                    <Typography className='category-text' variant='body3' fontWeight={'Light'} >Pretzels</Typography>
+                                </Box>
+                            </button>
+                            <button className={this.state.selectedCategory === 'Ice Cream' ? 'category-btn active' : 'category-btn'} onClick={() => this.handleCategoryClick('Ice Cream')}>
+                                <Box className='category-icon' display={'flex'} flexDirection={'column'} alignItems={'center'} >
+                                    <Box className='icon' width={'48px'}
+                                        height={'48px'}
+                                        display={'flex'}
+                                        justifyContent={'center'}
+                                        alignItems={'center'}>
+                                        <IceCreamIcon />
+                                    </Box>
+                                    <Typography className='category-text' variant='body3' fontWeight={'Light'}>Ice Cream</Typography>
+                                </Box>
+                            </button>
+                        </Box>
+                        <Box display={'flex'} flexWrap={'wrap'} gap={'40px'}>
+                            {filteredProducts.map(({ id, img1, img2, name, price, descriprion }) => (
+                                <Box key={id} display={'grid'} gap={'20px'}
+                                >
+                                    <Slider img1={img1} img2={img2} />
+                                    <Box display={'grid'} gap={'8px'}>
+                                        <Box color={'primary.light'} display={'flex'} justifyContent={'space-between'}>
+                                            <Typography variant='title' fontWeight={'Medium'}>{name}</Typography>
+                                            <Box display={'flex'} alignItems={'end'}>
+                                                <Typography variant='title'
+                                                    color={'primary.primary'}
+                                                    fontWeight={'Medium'}
+                                                    fontSize={'13px'}
+                                                >$</Typography>
+                                                <Typography fontWeight={'Medium'} variant='title'>{price}</Typography>
                                             </Box>
-                                        </button>
+                                        </Box>
+                                        <Typography variant='body2'
+                                            color={'primary.light'}
+                                            fontWeight={'Light'}>{descriprion}</Typography>
+                                    </Box>
+                                    <Box display={'flex'} justifyContent={'space-between'} gap={'24px'}>
+                                        <Box display={'flex'} alignItems={'center'} gap={'20px'}>
+                                            <button className='btn'
+                                                onClick={() => this.setState(prevState => ({ addToCartClicked: { ...this.state.addToCartClicked, [id]: false }, itemCounts: { ...prevState.itemCounts, [id]: (prevState.itemCounts[id] || 1) - 1 } }))} disabled={this.state.itemCounts[id] <= 1}
+                                            >
+                                                <MinusIcon />
+                                            </button>
+                                            <Typography variant='body1'
+                                                color={'primary.light'}
+                                                fontWeight={'Medium'}>{(this.state.itemCounts[id] || 1).toString().padStart(2, '0')}</Typography>
+                                            <button className='btn'
+                                                onClick={() => this.setState(prevState => ({ addToCartClicked: { ...this.state.addToCartClicked, [id]: false }, itemCounts: { ...prevState.itemCounts, [id]: (prevState.itemCounts[id] || 1) + 1 } }))}
+                                            >
+                                                <PlusIcon />
+                                            </button>
+                                        </Box>
+                                        {!this.state.addToCartClicked[id] ? (
+                                            <Box sx={{ width: { xs: '100%', sm: 'fit-content' } }}>
+                                                <PrimaryButton
+                                                    id={`add-to-cart-${id}`}
+                                                    buttonText={'Add to cart'}
+                                                    height='48px'
+                                                    onClick={() => this.addItem(id, this.state.itemCounts[id] || 1)}
+                                                />
+                                            </Box>
+                                        ) : (
+                                            <button className={!this.state.removeClicked[id] ? 'remove-btn' : 'remove-btn clicked'}
+                                                onClick={() => this.removeItem(id)}
+                                                style={{
+                                                    width: { xs: '100%', sm: 'fit-content' }
+                                                }}
+                                            >
+                                                <Box display={'flex'} alignItems={'center'} justifyContent={'center'} gap={'8px'}>
+                                                    <ShoppingIcon />
+                                                    <Typography variant='label1' color={'mintGreen'}>Added</Typography>
+                                                </Box>
+                                            </button>
 
-                                    )}
+                                        )}
+                                    </Box>
                                 </Box>
-                                <Divider />
-                            </Box>
-                        ))}
+                            ))}
+                        </Box>
                     </Box>
                 </Box >
             </>

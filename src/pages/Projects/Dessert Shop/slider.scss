@@ -104,12 +104,11 @@
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   max-height: 48px;
-  max-width: 196px;
-  width: 100%;
   background: none;
   color: #5FCBA4;
+  width: 100%;
   text-transform: none;
-  // padding: 12px 20px;
+  padding: 12px 20px 12px 16px;
   font-family: "Inconsolata", sans-serif;
   font-size: 16px;
   line-height: 1.42;
@@ -127,6 +126,27 @@
   &:focus {
     transition: all 0.3s ease;
     background: rgba(242, 242, 242, 0.12);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .slider-container {
+    width: calc(100vw - 89px);
+
+  }
+
+  .remove-btn {
+    width: fit-content;
+  }
+}
+@media screen and (min-width: 900px) {
+  .slider-container {
+    width: 100%;
+
+  }
+
+  .remove-btn {
+    width: fit-content;
   }
 }
 

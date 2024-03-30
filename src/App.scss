@@ -14,6 +14,36 @@ input {
     width: 100%;
 }
 
+.input-wrapper {
+    position: relative;
+
+    /* Убираем стандартные стили браузера */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.input-wrapper::after {
+    content: url('./pages/Projects/Todo App/trailing-icon.svg');
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
+    /* Цвет иконки */
+    pointer-events: none;
+    /* Иконка не должна перехватывать события мыши */
+}
+
+/* Стили для иконки календаря */
+.input-wrapper::-webkit-calendar-picker-indicator {
+    // display: none;
+    opacity: 0;
+}
+
 input::placeholder {
     color: #737373;
     opacity: 1;
@@ -34,4 +64,86 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* Скрываем сам чекбокс */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Стилизация лейбла */
+.checkbox-label {
+    position: relative;
+    // padding-left: 25px; /* Отступ для создания места для псевдоэлемента */
+    cursor: pointer;
+}
+
+/* Стилизация псевдоэлемента, создающего видимый кастомный чекбокс */
+.checkbox-label::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    /* Ширина кастомного чекбокса */
+    height: 16px;
+    /* Высота кастомного чекбокса */
+    border: 1px solid #D4D4D4;
+    border-radius: 2px;
+}
+
+/* Стилизация псевдоэлемента, показывающего галочку */
+.checkbox-label::after {
+    content: url('./pages/Projects/Todo App/tick.svg');
+    /* Unicode символ галочки */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 24px;
+    height: 24px;
+    visibility: hidden;
+    /* По умолчанию скрываем галочку */
+}
+
+/* Стилизация кастомного чекбокса при выборе */
+input[type="checkbox"]:checked+.checkbox-label::before {
+    width: 18px;
+    /* Ширина кастомного чекбокса */
+    height: 18px;
+    /* Высота кастомного чекбокса */
+    background-color: #E5CE71;
+    /* Цвет фона при выборе */
+    border: none;
+    /* Цвет внешнего контура при выборе */
+}
+
+/* Показываем галочку при выборе */
+input[type="checkbox"]:checked+.checkbox-label::after {
+    visibility: visible;
+}
+
+.MuiMenu-paper {
+    background-color: #242423 !important;
+    box-shadow: 0px 0px 6px 0px #12110E!important;
+    border-radius: 16px!important;
+    border: 1px solid #262626;
+    padding: 8px;
+    width: 182px;
+    margin-left: -20px;
+    margin-top: -3px;
+}
+.MuiMenu-list {
+    padding: 0!important;
+}
+.MuiMenuItem-root {
+    padding: 8px 12px!important;
+}
+.todo-progress {
+    width: 108px;
+    height: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: center / contain no-repeat url('./pages/Projects/Todo App/bg-element.svg');
+
 }

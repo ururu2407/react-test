@@ -5,12 +5,12 @@ import {
     List,
     ListItem,
     ListItemText,
-    ListItemIcon
+    ListItemIcon,
+    useTheme
 } from '@mui/material';
-import { BehanceIconLight, GithubIconLight, HandshakeIcon } from '../../../utils/icons';
-
-
+import { BehanceIconLight, GithubIconLight } from '../../../utils/icons';
 export const Sixth = () => {
+    const theme = useTheme();
     return (
         <>
             <Box display={'grid'} gap='20px'>
@@ -41,17 +41,23 @@ export const Sixth = () => {
                         display='grid'
                         gap='16px'>
                         <Typography className='dash green'
-                                sx={{ padding: '12px 15px' }}
+                            sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Teambuilding</Typography>
                         <Typography className='dash green'
-                                sx={{ padding: '12px 15px' }}
+                            sx={{
+                                padding: '12px 15px',
+                                marginLeft: { sm: '60px', md: '67px' }
+                            }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Project theme selection</Typography>
                         <Typography className='dash green'
-                                sx={{ padding: '12px 15px' }}
+                            sx={{
+                                padding: '12px 15px',
+                                marginLeft: { sm: '120px', md: '180.5px' }
+                            }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Develop project plan</Typography>
@@ -88,61 +94,95 @@ export const Sixth = () => {
                         } />
                     </ListItem>
                 </List>
-                <Box display='flex' justifyContent='center' alignItems='center'>
-                    <Box sx={{ width: '48px', height: '48px' }} padding='14px'>
-                        <BehanceIconLight sx={{ width: '48px', height: '48px' }} />
-                    </Box>
-                    <HandshakeIcon sx={{ width: '32px', height: '32px' }} />
-                    <Box sx={{ width: '48px', height: '48px' }} padding='14px'>
-                        <GithubIconLight sx={{ width: '48px', height: '48px' }} />
-                    </Box>
-                </Box>
                 <Typography
                     variant='body1'
                     fontWeight='Light'
                     color='primary.light'
                 >After that, we started discussing potential topics for our projects. Oleksii mentioned that he intended to create a bunch of JavaScript projects, there was an idea to develop their design.</Typography>
-                <Box display={'grid'} gap='20px'>
-                    <Box
-                        display={'flex'} justifyContent={'center'} alignItems={'center'}
-                        padding={'8px'} border={1} borderRadius={'16px'}
-                        borderColor={'divider'}>
-                        <img src="https://s3-alpha-sig.figma.com/img/6a27/7f3b/5cabc87345042c683d7dff81fc173745?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dlOAoFZCQbqZkVI-q2Dzt5Fu92KIxRLe2cuss5QXGboAqGHuunemx94Yz9LGzuZ~1ebuonV7hVUpNzhI5eC0R~nyvjZxbmSz2sUtpHx~pI8KlYXU-y3vaqwEj0dWQD6ikLk5bUZXw6gxmRCtB8eJlcGTv9jJsP6MLBYJW1yOiPoss2lkjMSF42JQWJM8z3QM~09FcywiDTjgmCKBSu1vNh3IPS~6KWyI-gf5FFMqXIE9K64J1muSFoOD~wba7bepr1UFTaWBxrIkOuiLfhWF7f~-4Z5dBCbUZ~UeHjVPyzvD~JIHC8a-OXx1wm1nHS6Ap1S2Z7H6O9e0Y48ZsGCpjQ__"
-                            alt=""
-                            width={'100%'}
-                            style={{ borderRadius: '16px' }}  /* Apply borderRadius directly to the img */
-                        />
-                    </Box>
-                    <Box display={'flex'} justifyContent={'space-around'}>
-                        <Box
-                            display={'flex'} justifyContent={'center'} alignItems={'center'}
+                <Box display={'grid'} gap={'20px'}>
+                    <Box display={'flex'} gap={'20px'}>
+                        <Box justifyContent={'center'} alignItems={'center'}
                             padding={'8px'} border={1} borderRadius={'16px'}
-                            borderColor={'divider'}>
-                            <img src="https://s3-alpha-sig.figma.com/img/a743/97b1/8939d34c75d4663574b3a98b3579d8c0?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gvI731FzZvTj1chMdK7FlEDzSH6jHM3IrL0b7bfvdX3z0D3rrqG5gCU-zUV13a9tiSLJtG7tCYq-v2UFfSWTEa31r8Py0M6IQgT5CIvM1IjQbWvgRUzDdUa3BBlu22QrUb-UN9Az8Q88W7uvxysDSNUBSiKRdz-r6MfBh-Tawoe9D~2QOCZXpIaK48~5RCXq-~GInaTPACZ-e9cD6vEGoipkJwxloUcSfz35Onko9Dwihm~1iCZ6-2udQ~yblBZro7w3oT8qe8XofOMG1s2of1kNeHiNeVRjo4l7qnjwsg~dGxTr3XPeixrG6AtXHaMiEncf1SVPb8PoF2AZbl8ZWg__"
+                            borderColor={'divider'} objectFit={'cover'} overflow={'hidden'}
+                            height={'157px'} width={'100%'}
+                            sx={{
+                                [theme.breakpoints.up('sm')]: {
+                                    width: '50%',
+                                    height: '296px',
+                                }
+                            }}>
+                            <img src="https://i.imgur.com/KmadZcJ.png"
+                                style={{ objectFit: 'cover', borderRadius: '16px' }}
                                 alt=""
                                 width={'100%'}
-                                style={{ borderRadius: '16px' }}  /* Apply borderRadius directly to the img */
+                                height={'100%'}
                             />
                         </Box>
-                        <Box
-                            display={'flex'} justifyContent={'center'} alignItems={'center'}
+                        <Box sx={{
+                            [theme.breakpoints.down('sm')]: {
+                                display: 'none',
+                            }
+                        }} width={'50%'} display={'grid'} justifyContent={'center'} alignItems={'center'}
                             padding={'8px'} border={1} borderRadius={'16px'}
-                            borderColor={'divider'}>
-                            <img src="https://s3-alpha-sig.figma.com/img/a743/97b1/8939d34c75d4663574b3a98b3579d8c0?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gvI731FzZvTj1chMdK7FlEDzSH6jHM3IrL0b7bfvdX3z0D3rrqG5gCU-zUV13a9tiSLJtG7tCYq-v2UFfSWTEa31r8Py0M6IQgT5CIvM1IjQbWvgRUzDdUa3BBlu22QrUb-UN9Az8Q88W7uvxysDSNUBSiKRdz-r6MfBh-Tawoe9D~2QOCZXpIaK48~5RCXq-~GInaTPACZ-e9cD6vEGoipkJwxloUcSfz35Onko9Dwihm~1iCZ6-2udQ~yblBZro7w3oT8qe8XofOMG1s2of1kNeHiNeVRjo4l7qnjwsg~dGxTr3XPeixrG6AtXHaMiEncf1SVPb8PoF2AZbl8ZWg__"
+                            borderColor={'divider'} objectFit={'cover'} overflow={'hidden'}
+                            height={'296px'}>
+                            <img src="https://i.imgur.com/sFJGEzh.png"
+                                style={{ objectFit: 'cover', borderRadius: '16px' }}
                                 alt=""
                                 width={'100%'}
-                                style={{ borderRadius: '16px' }}  /* Apply borderRadius directly to the img */
+                                height={'100%'}
                             />
                         </Box>
                     </Box>
-                    <Box
-                        display={'flex'} justifyContent={'center'} alignItems={'center'}
+                    <Box display={'flex'} gap={'20px'}>
+                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'}
+                            padding={'8px'} border={1} borderRadius={'16px'}
+                            borderColor={'divider'} height={'121px'}
+                            objectFit={'cover'} overflow={'hidden'} width={'50%'}
+                            sx={{
+                                [theme.breakpoints.up('sm')]: {
+                                    height: '296px',
+                                }
+                            }}>
+                            <img src="https://i.imgur.com/Ue6rCxI.png"
+                                style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                alt=""
+                                width={'100%'}
+                                height={'100%'}
+                            />
+                        </Box>
+                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'}
+                            padding={'8px'} border={1} borderRadius={'16px'}
+                            borderColor={'divider'} height={'121px'}
+                            objectFit={'cover'} overflow={'hidden'}
+                            width={'50%'}
+                            sx={{
+                                [theme.breakpoints.up('sm')]: {
+                                    height: '296px',
+                                }
+                            }}>
+                            <img src="https://i.imgur.com/xrpaKGl.png"
+                                style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                alt=""
+                                width={'100%'}
+                                height={'100%'}
+                            />
+
+                        </Box>
+                    </Box>
+                    <Box sx={{
+                        [theme.breakpoints.up('sm')]: {
+                            display: 'none',
+                        }
+                    }} justifyContent={'center'} alignItems={'center'}
                         padding={'8px'} border={1} borderRadius={'16px'}
-                        borderColor={'divider'}>
-                        <img src="https://s3-alpha-sig.figma.com/img/ad0c/130a/bb3f8871e8325bcf3f424d00f3823a06?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SnjZwVhaSJIm8YHCXSFFZDpK04sKx9rivQ9Nm~f-MCLGWPBFYSOdu01WjhHQEEZFMMD3Q5BKzqDfKHk4aiIZp~ne9bC84UuKlhRM0qdRB-n5-BLkV-qtAlj~M-zXz8fEzDjv~Zf3Q5V6iZs-gVV-OiXDMCujMz0NovXwp164VdCSiTqkYoRzXxTx7HclfcbjfybT6sqle-J2u-XH3c0Kx5WbLHlpDMEkdKBi7H6eq36kfON8VZC~G2rgRS-HURElNPgc6rhRsEIyzqcp6ryAuPqR-3TOZpR3w2Sqo72PmrzSdrXbTDy4UjfGRBrg3fRjS1YFb0oo-THIIrk~ArJpAA__"
+                        borderColor={'divider'} objectFit={'cover'} overflow={'hidden'}
+                        minHeight={'91px'}>
+                        <img src="https://i.imgur.com/sFJGEzh.png"
+                            style={{ objectFit: 'cover', borderRadius: '16px' }}
                             alt=""
                             width={'100%'}
-                            style={{ borderRadius: '16px' }}  /* Apply borderRadius directly to the img */
+                            height={'100%'}
                         />
                     </Box>
                 </Box>
@@ -171,12 +211,15 @@ export const Sixth = () => {
                         display='grid'
                         gap='16px'>
                         <Typography className='dash blue'
-                                sx={{ padding: '12px 15px' }}
+                            sx={{ padding: '12px 15px' }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Execution of work</Typography>
                         <Typography className='dash blue'
-                                sx={{ padding: '12px 15px' }}
+                            sx={{
+                                padding: '12px 15px',
+                                marginLeft: { sm: '60px', md: '67px' }
+                            }}
                             variant='body2'
                             fontWeight='Light'
                             color='primary.light'>Progress reporting</Typography>

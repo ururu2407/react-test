@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { OutlinedButton } from '../../../components/customs';
+import { useTheme } from '@mui/material/styles';
 
 export const RpgProgram = () => {
+    const theme = useTheme()
     const [xp, setXp] = useState(0)
     const [health, setHealth] = useState(100)
     const [gold, setGold] = useState(50)
@@ -272,36 +274,66 @@ export const RpgProgram = () => {
     }
     return (
         <>
-            <Box display='grid' gap='20px'>
-                <Typography
-                    variant='headline'
-                    color='primary.light'
-                >Role Playing Game</Typography>
-                <Box display={'flex'} gap='32px'>
+            <Box display='grid' gap='20px'
+                sx={{
+                    [theme.breakpoints.up('sm')]: {
+                        display: 'flex',
+                        gap: '54px',
+                    }
+                }}>
+                <Box display={'flex'} gap='32px'
+                    sx={{
+                        [theme.breakpoints.up('sm')]: {
+                            display: 'grid',
+                            minWidth: 'fit-content',
+                            height: '136px',
+                        }
+                    }}>
                     <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Health: <span className="healthText">{health}</span></Typography>
                     <Typography variant='body2' fontWeight={'Medium'} color='primary.primary' className="stat">Gold: <span className="goldText">{gold}</span></Typography>
                     <Typography variant='body2' fontWeight={'Medium'} color='mintGreen' className="stat">XP: <span className="xpText">{xp}</span></Typography>
                 </Box>
-                <Box display={'flex'} flexWrap={'wrap'} gap='12px'>
-                    <Box display={'flex'} gap={'12px'} width='100%'>
-                        <OutlinedButton width='100%' buttonText={button1Text} onClick={button1} />
-                        <OutlinedButton width='100%' buttonText={button2Text} onClick={button2} />
+                <Box display={'grid'} gap='20px' width={'100%'}>
+                    <Box display={'flex'} flexWrap={'wrap'} width={'100%'} gap='12px' 
+                    sx={{
+                        [theme.breakpoints.up('sm')]: {
+                            flexWrap: 'nowrap',
+                        }
+                    }}>
+                        <Box display={'flex'} width={'100%'} gap='12px'
+                        sx={{
+                            [theme.breakpoints.up('sm')]: {
+                                width: '66.6%',
+                            }
+                        }}>
+                            <OutlinedButton buttonText={button1Text} onClick={button1} />
+                            <OutlinedButton buttonText={button2Text} onClick={button2} />
+                        </Box>
+                        <Box display={'flex'} width={'100%'}
+                        sx={{
+                            [theme.breakpoints.up('sm')]: {
+                                width: '33.3%',
+                            }
+                        }}>
+                            <OutlinedButton buttonText={button3Text} onClick={button3} />
+                        </Box>
                     </Box>
-                    <OutlinedButton width='100%' buttonText={button3Text} onClick={button3} />
+                    <Box display={monsterStats} gap='32px'>
+                        <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Monster Name: <span className="monsterName">{monsterName}</span></Typography>
+                        <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Health: <span className="monsterHealth">{monsterHealth}</span></Typography>
+                    </Box>
+                    <Typography
+                        variant='body1'
+                        padding='16px'
+                        minHeight={'200px'}
+                        width={'auto'}
+                        fontWeight={'Light'}
+                        color='primary.light'
+                        className='dash'>
+                        {text}
+                    </Typography>
                 </Box>
-                <Box display={monsterStats} gap='32px'>
-                    <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Monster Name: <span className="monsterName">{monsterName}</span></Typography>
-                    <Typography variant='body2' fontWeight={'Medium'} color='coralRed' className="stat">Health: <span className="monsterHealth">{monsterHealth}</span></Typography>
-                </Box>
-                <Typography
-                    variant='body1'
-                    padding='16px'
-                    fontWeight={'Light'}
-                    color='primary.light'
-                    className='dash'>
-                    {text}
-                </Typography>
-            </Box>
+            </Box >
         </>
     );
 };

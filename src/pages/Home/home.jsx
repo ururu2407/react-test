@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 export const Home = () => {
     return (
         <>
-            <Box className="main" display={'grid'} gap={'64px'}>
+            <Box className="main" display={'grid'} gap={'80px'}>
                 <First />
                 <Second />
                 <Third />

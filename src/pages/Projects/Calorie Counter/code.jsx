@@ -13,17 +13,12 @@ export const CalorieCounterCode = () => {
         Breakfast: [],
         Lunch: [],
         Dinner: [],
+        Snacks: [],
     });
 
+    const [prevInputStates, setPrevInputStates] = useState([]);
     const [exerciseData, setExerciseData] = useState([]);
-
-    const [hiddenFields, setHiddenFields] = useState({
-        breakfast: false,
-        lunch: false,
-        dinner: false,
-    });
-
-    const [hiddenExerciseFields, setHiddenExerciseFields] = useState(false);
+    const [prevInputStatesExercise, setPrevInputStatesExercise] = useState([]);
 
     const [active, setActive] = useState({
         breakfast: false,
@@ -31,32 +26,11 @@ export const CalorieCounterCode = () => {
         dinner: false,
     });
 
-    const [exerciseActive, setExerciseActive] = useState(false);
-
     const [baseGoal, setBaseGoal] = useState({
         name: 'Base goal',
         calories: 1000,
     });
 
-    const [baseGoalEditing, setBaseGoalEditing] = useState(false);
-
-    // Оригинальные значения базовой цели для отмены изменений
-    const [originalBaseGoal, setOriginalBaseGoal] = useState({ ...baseGoal });
-
-    const handleEditBaseGoal = () => {
-        setBaseGoalEditing(true);
-        // Сохраняем оригинальные значения перед редактированием
-        setOriginalBaseGoal({ ...baseGoal });
-    };
-
-    const handleSaveBaseGoal = () => {
-        setBaseGoalEditing(false);
-    };
-
-    const handleCancelBaseGoal = () => {
-        // Отменяем изменения и восстанавливаем оригинальные значения
-        setBaseGoal(originalBaseGoal);
-    };
 
     const handleChangeBaseGoalName = (event) => {
         setBaseGoal({
@@ -77,7 +51,6 @@ export const CalorieCounterCode = () => {
             ...active,
             [meal]: true
         });
-        showFields(meal);
         setMealData({
             ...mealData,
             [meal]: [...mealData[meal], { food: '', calories: '', displayText: false }],
@@ -85,61 +58,7 @@ export const CalorieCounterCode = () => {
     };
 
     const addExercise = () => {
-        setExerciseActive(true);
-        showExerciseFields();
         setExerciseData([...exerciseData, { exercise: '', calories: '', displayText: false }]);
-    };
-
-    const hideFields = (meal) => {
-        setActive({
-            ...active,
-            [meal]: false
-        });
-        setHiddenFields({
-            ...hiddenFields,
-            [meal]: true,
-        });
-        const updatedData = { ...mealData };
-        updatedData[meal].forEach((field, index) => {
-            updatedData[meal][index].displayText = true;
-        });
-        setMealData(updatedData);
-    };
-
-    const showFields = (meal) => {
-        setActive({
-            ...active,
-            [meal]: true
-        });
-        setHiddenFields({
-            ...hiddenFields,
-            [meal]: false,
-        });
-        const updatedData = { ...mealData };
-        updatedData[meal].forEach((field, index) => {
-            updatedData[meal][index].displayText = false;
-        });
-        setMealData(updatedData);
-    };
-
-    const hideExerciseFields = () => {
-        setExerciseActive(false);
-        setHiddenExerciseFields(true);
-        const updatedData = [...exerciseData];
-        updatedData.forEach((field, index) => {
-            updatedData[index].displayText = true;
-        });
-        setExerciseData(updatedData);
-    };
-
-    const showExerciseFields = () => {
-        setExerciseActive(true);
-        setHiddenExerciseFields(false);
-        const updatedData = [...exerciseData];
-        updatedData.forEach((field, index) => {
-            updatedData[index].displayText = false;
-        });
-        setExerciseData(updatedData);
     };
 
     const sumCalories = (meal) => {
@@ -179,32 +98,35 @@ export const CalorieCounterCode = () => {
             totalCaloriesWithoutExercise: totalCalories - totalExerciseCalories,
         };
     };
+    
+    const [isEditing, setIsEditing] = useState(true);
 
-    const cancelMeal = (meal) => {
-        const updatedData = { ...mealData };
-        const lastInputIndex = updatedData[meal].length - 1;
-        if (lastInputIndex >= 0) {
-            if (updatedData[meal][lastInputIndex].food === '' && updatedData[meal][lastInputIndex].calories === '') {
-                updatedData[meal].pop();
-            } else {
-                updatedData[meal][lastInputIndex].food = '';
-                updatedData[meal][lastInputIndex].calories = '';
-            }
-            setMealData(updatedData);
-        }
+    const handleEditSave = () => {
+        setIsEditing(!isEditing);
+    };
+    const handleBlur = (meal, index, field, value) => {
+        setPrevInputStates(prevInputStates => [...prevInputStates, { meal, index, field, value }]);
     };
 
-    const cancelExercise = () => {
-        const updatedData = [...exerciseData];
-        const lastInputIndex = updatedData.length - 1;
-        if (lastInputIndex >= 0) {
-            if (updatedData[lastInputIndex].exercise === '' && updatedData[lastInputIndex].calories === '') {
-                updatedData.pop();
-            } else {
-                updatedData[lastInputIndex].exercise = '';
-                updatedData[lastInputIndex].calories = '';
-            }
+    const handleBlurExercise = (index, field, value) => {
+        setPrevInputStatesExercise([...prevInputStatesExercise, { index, field, value }]);
+    };
+
+    const handleCancel = () => {
+        if (prevInputStates.length > 0) {
+            const updatedData = { ...mealData };
+            const lastInputState = prevInputStates[prevInputStates.length - 1];
+            const { meal, index, field } = lastInputState;
+            updatedData[meal][index][field] = ''; 
+            setMealData(updatedData);
+            setPrevInputStates(prevInputStates.slice(0, -1)); 
+        } else if (prevInputStatesExercise.length > 0) {
+            const updatedData = [...exerciseData];
+            const lastInputState = prevInputStatesExercise[prevInputStatesExercise.length - 1];
+            const { index, field } = lastInputState;
+            updatedData[index][field] = ''; 
             setExerciseData(updatedData);
+            setPrevInputStatesExercise(prevInputStatesExercise.slice(0, -1));
         }
     };
     `;
