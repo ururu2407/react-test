@@ -5,7 +5,6 @@ import Tab from '@mui/material/Tab';
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {useTheme} from '@mui/material';
 export const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
 
@@ -240,12 +239,6 @@ export const OutlinedButton = ({ buttonText, onClick, padding = '8px 16px',  wid
                 fontWeight: '400',
                 '&:hover': {
                     backgroundColor: 'button.hover',
-                },
-                '&:active': {
-                    backgroundColor: 'button.pressed',
-                },
-                '&:focus': {
-                    backgroundColor: 'button.pressed',
                 }
             }}
             onClick={onClick}
@@ -273,12 +266,6 @@ export const PrimaryButton = ({ buttonText, onClick, padding = '12px 20px', widt
                 letterSpacing: '0.1px',
                 fontWeight: '400',
                 '&:hover': {
-                    backgroundColor: 'primary.primary',
-                },
-                '&:active': {
-                    backgroundColor: 'primary.primary',
-                },
-                '&:focus': {
                     backgroundColor: 'primary.primary',
                 }
             }}
@@ -308,12 +295,6 @@ export const TextButton = ({ buttonText, onClick, padding = '12px 20px',  width 
                 fontWeight: '400',
                 '&:hover': {
                     backgroundColor: 'button.hover',
-                },
-                '&:active': {
-                    backgroundColor: 'button.pressed',
-                },
-                '&:focus': {
-                    backgroundColor: 'button.pressed',
                 }
             }}
             onClick={onClick}

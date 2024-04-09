@@ -13,7 +13,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/react-test' element={<Home />} />
+        <Route path='/react-test/' element={<Home />} />
         <Route path='/react-test/rpg' element={<RolePlayingGame />} />
         <Route path='/react-test/calorie-calculator' element={<CalorieCounter />} />
         <Route path='/react-test/music-player' element={<MusicPlayer />} />

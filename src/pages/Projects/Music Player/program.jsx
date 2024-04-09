@@ -424,7 +424,7 @@ export const MusicPlayerProgram = () => {
                 <Box marginBottom={'20px'}>
                     <Typography variant="headline" color={'primary.light'} >Playlist</Typography>
                 </Box>
-                <List sx={{ display: 'grid', gap: '20px' }}>
+                <List sx={{ display: 'grid', gap: '20px', padding: '0' }}>
                     {allSongs.map((song) => (
                         <ListItemButton display='flex' sx={{ padding: '0', gap: '32px' }} key={song.id}>
                             <Box

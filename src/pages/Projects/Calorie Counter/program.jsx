@@ -301,7 +301,7 @@ export const CalorieCounterProgram = () => {
                                 </Box>
                             ))}
                             <Box padding={'8px 0'} sx={{ display: isEditing ? 'none' : 'block' }}>
-                                <TextButton width='113px' buttonText={'+ Add Entry'} onClick={() => addField(meal)} />
+                                <TextButton width='130px' buttonText={'+ Add Entry'} onClick={() => addField(meal)} />
                             </Box>
                             <Divider sx={{ margin: isEditing ? '16px 0' : '0 0 16px 0' }} />
 
@@ -371,7 +371,7 @@ export const CalorieCounterProgram = () => {
                             </Box>
                         ))}
                         <Box padding={'8px 0'} sx={{ display: isEditing ? 'none' : 'block' }}>
-                            <TextButton width='113px' buttonText={'+ Add Entry'} onClick={addExercise} />
+                            <TextButton width='130px' buttonText={'+ Add Entry'} onClick={addExercise} />
                         </Box>
 
                     </Box>
