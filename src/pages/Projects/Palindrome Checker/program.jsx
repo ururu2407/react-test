@@ -84,6 +84,7 @@ export const PalindromeCheckerProgram = () => {
                                 fontWeight: 'Regular',
                                 textTransform: 'none',
                                 padding: '12px 20px',
+                                height: '40px',
                                 borderRadius: '12px',
                                 '&:hover': {
                                     backgroundColor: resultBool === 1 ? 'mintGreen' : (resultBool === 2 ? 'coralRed' : 'primary.primary'),
