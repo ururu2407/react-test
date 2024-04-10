@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { useTheme } from '@mui/material';
 export const PalindromeCheckerProgram = () => {
     const inputRef = useRef()
     const [resultBool, setResultBoll] = useState(null)
@@ -22,9 +21,7 @@ export const PalindromeCheckerProgram = () => {
     }
     function buttonFunc() {
         checkPalindrome(inputRef.current.value)
-        console.log(inputRef.current.value)
         inputRef.current.value = ''
-
     }
     const [isFocused, setIsFocused] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -44,7 +41,6 @@ export const PalindromeCheckerProgram = () => {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
-    const theme = useTheme()
     return (
         <>
             {/* <GlobalInputBaseStyles /> */}

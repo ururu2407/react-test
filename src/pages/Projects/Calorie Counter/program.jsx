@@ -12,7 +12,7 @@ export const CalorieCounterProgram = () => {
         Snacks: [],
     });
 
-    const [prevInputStates, setPrevInputStates] = useState([]); // Состояние для хранения предыдущих состояний данных инпутов
+    const [prevInputStates, setPrevInputStates] = useState([]);
     const [exerciseData, setExerciseData] = useState([]);
     const [prevInputStatesExercise, setPrevInputStatesExercise] = useState([]);
 
@@ -144,16 +144,16 @@ export const CalorieCounterProgram = () => {
             const updatedData = { ...mealData };
             const lastInputState = prevInputStates[prevInputStates.length - 1];
             const { meal, index, field } = lastInputState;
-            updatedData[meal][index][field] = ''; // Очищаем значение поля
+            updatedData[meal][index][field] = '';
             setMealData(updatedData);
-            setPrevInputStates(prevInputStates.slice(0, -1)); // Удаляем последнее состояние из списка
+            setPrevInputStates(prevInputStates.slice(0, -1)); 
         } else if (prevInputStatesExercise.length > 0) {
             const updatedData = [...exerciseData];
             const lastInputState = prevInputStatesExercise[prevInputStatesExercise.length - 1];
             const { index, field } = lastInputState;
-            updatedData[index][field] = ''; // Очищаем значение поля
+            updatedData[index][field] = ''; 
             setExerciseData(updatedData);
-            setPrevInputStatesExercise(prevInputStatesExercise.slice(0, -1)); // Удаляем последнее состояние из списка
+            setPrevInputStatesExercise(prevInputStatesExercise.slice(0, -1));
         }
     };
     const theme = useTheme()
